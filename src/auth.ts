@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth'
+// @ts-ignore
 import type { NextAuthOptions } from 'next-auth'
 import GitHUbProvider from 'next-auth/providers/github'
 
@@ -14,9 +15,6 @@ const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_SECRET ?? ''
     })
   ] as NextAuthOptions['providers'],
-
-  // @ts-ignore
-  basePath: '/api/auth',
 
   secret: process.env.SECRET
 }
