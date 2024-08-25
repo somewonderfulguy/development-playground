@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 
 import {
   DropdownMenu,
@@ -16,7 +16,13 @@ function getFirstTwoCapitalLetters(str?: string | null) {
   return match ? match.slice(0, 2).join('') : ''
 }
 
-export default function UserButton() {
+export default function UserButton({
+  onSignIn,
+  onSignOut
+}: {
+  onSignIn: () => Promise<void>
+  onSignOut: () => Promise<void>
+}) {
   const { data: session, status } = useSession()
 
   return (
@@ -34,7 +40,7 @@ export default function UserButton() {
           <DropdownMenuContent>
             <DropdownMenuItem
               onClick={() => {
-                signOut()
+                onSignOut()
               }}
             >
               Sign Out
@@ -43,7 +49,7 @@ export default function UserButton() {
         </DropdownMenu>
       )}
       {status === 'unauthenticated' && (
-        <Button onClick={() => signIn()}>Sign in</Button>
+        <Button onClick={() => onSignIn()}>Sign in</Button>
       )}
     </div>
   )
