@@ -1,21 +1,10 @@
-import Chat from '@/app/components/Chat'
-import { Separator } from '@radix-ui/react-dropdown-menu'
-import { auth } from '@/auth'
+import Link from 'next/link'
+import Image from 'next/image'
 
-export default async function Home() {
-  const session = await auth()
+// import { lusitana } from '@/app/ui/fonts';
+// import AcmeLogo from '@/app/ui/acme-logo';
+// import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-  return (
-    <main className="p-5">
-      <h1 className="text-4xl font-bold">Welcome To GPT Chat</h1>
-      {!session?.user?.email ? (
-        <div>You need to log in to use this chat.</div>
-      ) : (
-        <>
-          <Separator className="my-5" />
-          <Chat />
-        </>
-      )}
-    </main>
-  )
+export default function Page() {
+  return <div>Hello...</div>
 }
