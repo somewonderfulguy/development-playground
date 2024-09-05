@@ -1,4 +1,4 @@
-import Chat from '@/app/chat-gpt/components/Chat'
+import Chat from './components/Chat'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { auth } from '@/auth'
 
