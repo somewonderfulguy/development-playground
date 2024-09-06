@@ -12,7 +12,7 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 const links = [
   {
@@ -53,7 +53,7 @@ export default function NavLinks() {
 
   return (
     <>
-      {links.map((link) => {
+      {links.map((link, idx) => {
         const LinkIcon = link.icon
 
         const item = (
@@ -69,11 +69,10 @@ export default function NavLinks() {
         const childrenHrefs = link.children?.map((child) => child.href) || []
 
         return (
-          <>
+          <Fragment key={idx}>
             {link.href ? (
               <Link
-                key={link.name}
-                href={link.href}
+                href={link.name}
                 className={clsx(itemClassName, 'hover:bg-sky-100 hover:text-blue-600', {
                   'bg-sky-100 text-blue-600': pathname === link.href
                 })}
@@ -82,7 +81,6 @@ export default function NavLinks() {
               </Link>
             ) : (
               <button
-                key={link.name}
                 className={itemClassName}
                 style={{ fontWeight: childrenHrefs.includes(pathname) ? 'bold' : 'normal' }}
                 onClick={() => setOpenItems((prev) => ({ ...prev, [link.name]: !prev[link.name] }))}
@@ -95,7 +93,7 @@ export default function NavLinks() {
                 const ChildIcon = child.icon
                 return (
                   <Link
-                    key={child.name}
+                    key={child.href}
                     href={child.href}
                     // TODO: change the style to use tailwind classes
                     style={{ margin: 0, padding: '4px 6px', paddingLeft: '1.2rem' }}
@@ -111,7 +109,7 @@ export default function NavLinks() {
                   </Link>
                 )
               })}
-          </>
+          </Fragment>
         )
       })}
     </>
