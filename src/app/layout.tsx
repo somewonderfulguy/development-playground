@@ -1,4 +1,4 @@
-import { inter } from './constants/fonts'
+import { inter } from '../constants/fonts'
 import { ReactNode } from 'react'
 
 import './global.css'
