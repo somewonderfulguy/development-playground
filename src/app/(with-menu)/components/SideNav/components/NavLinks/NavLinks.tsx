@@ -72,7 +72,7 @@ export default function NavLinks() {
           <Fragment key={idx}>
             {link.href ? (
               <Link
-                href={link.name}
+                href={link.href}
                 className={clsx(itemClassName, 'hover:bg-sky-100 hover:text-blue-600', {
                   'bg-sky-100 text-blue-600': pathname === link.href
                 })}

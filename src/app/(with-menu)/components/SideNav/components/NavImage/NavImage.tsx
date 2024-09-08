@@ -3,12 +3,25 @@
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 
+import chatGpt from './assets/jherr-chatgpt-course.png'
+import nextjs from './assets/nextjs-course.png'
+import about from './assets/web-dev.png'
+import unknown from './assets/question-mark.png'
+
 export default function NavImage() {
   const pathname = usePathname()
   return (
     <Image
-      // TODO: add "about", "404", "error", "unknown" images
-      src={pathname.startsWith('/chat-gpt') ? '/jherr-chatgpt-course.png' : '/nextjs-course.png'}
+      // TODO: "404", "error"
+      src={
+        pathname.startsWith('/chat-gpt')
+          ? chatGpt
+          : pathname.startsWith('/dashboard')
+          ? nextjs
+          : pathname === '/about'
+          ? about
+          : unknown
+      }
       width={240}
       height={134}
       alt="Next.js course"
