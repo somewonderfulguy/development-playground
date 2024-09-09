@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode
 }
 
-export default function RootLayout({ children }: Props) {
+export default function HomeLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={`antialiased ${inter.className}`}>{children}</body>

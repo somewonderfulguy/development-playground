@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'ChatGPT brought to you by NextJS'
 }
 
-export default async function RootLayout({
+export default async function ChatGPTLayout({
   children
 }: Readonly<{
   children: React.ReactNode

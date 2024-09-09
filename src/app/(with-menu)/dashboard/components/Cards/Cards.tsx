@@ -23,7 +23,7 @@ export default async function Cards() {
   )
 }
 
-export function Card({
+function Card({
   title,
   value,
   type

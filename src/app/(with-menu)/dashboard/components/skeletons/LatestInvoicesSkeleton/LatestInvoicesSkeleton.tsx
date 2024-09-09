@@ -1,6 +1,6 @@
 import { skeletonShimmer } from '../styles/skeletonShimmer'
 
-export function InvoiceSkeleton() {
+function InvoiceSkeleton() {
   return (
     <div className="flex flex-row items-center justify-between border-b border-gray-100 py-4">
       <div className="flex items-center">

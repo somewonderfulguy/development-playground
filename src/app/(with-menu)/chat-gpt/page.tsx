@@ -2,7 +2,7 @@ import Chat from './components/Chat'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { auth } from '@/auth'
 
-export default async function Home() {
+export default async function GhatGPTPage() {
   const session = await auth()
 
   return (
