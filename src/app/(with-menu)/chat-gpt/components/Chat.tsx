@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -14,12 +14,11 @@ interface Message {
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([])
   const [message, setMessage] = useState('')
+  const chatId = useRef<number | null>(null)
 
   const onClick = async () => {
-    const completions = await getCompletion([
-      ...messages,
-      { role: 'user', content: message }
-    ])
+    const completions = await getCompletion(chatId.current, [...messages, { role: 'user', content: message }])
+    chatId.current = completions.id
     setMessage('')
     setMessages(completions.messages)
   }
@@ -27,17 +26,8 @@ export default function Chat() {
   return (
     <div className="flex flex-col">
       {messages.map((message, idx) => (
-        <div
-          key={idx}
-          className={`mb-5 flex flex-col ${
-            message.role === 'user' ? 'items-end' : 'items-start'
-          }`}
-        >
-          <div
-            className={`${
-              message.role === 'user' ? 'bg-blue-500' : 'bg-gray-500 text-black'
-            } rounded-md py-2 px-8`}
-          >
+        <div key={idx} className={`mb-5 flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+          <div className={`${message.role === 'user' ? 'bg-blue-500' : 'bg-gray-500 text-black'} rounded-md py-2 px-8`}>
             {message.content}
           </div>
         </div>

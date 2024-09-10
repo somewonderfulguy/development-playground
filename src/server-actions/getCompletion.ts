@@ -2,11 +2,15 @@
 
 import OpenAI from 'openai'
 
+import { auth as getServerSession } from '@/auth'
+import { createChat, updateChat } from '@/db/chatgpt-db'
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
 
 export async function getCompletion(
+  id: number | null,
   messageHistory: { role: 'user' | 'assistant'; content: string }[]
 ) {
   const response = await openai.chat.completions.create({
@@ -22,5 +26,13 @@ export async function getCompletion(
     }
   ]
 
-  return { messages }
+  const session = await getServerSession()
+  let chatId = id
+  if (!chatId) {
+    chatId = await createChat(session?.user?.email!, messageHistory[0].content, messages)
+  } else {
+    await updateChat(chatId, messages)
+  }
+
+  return { messages, id: chatId }
 }
