@@ -1,5 +1,7 @@
-import { inter } from '../constants/fonts'
 import { ReactNode } from 'react'
+
+import { inter } from '@/constants/fonts'
+import Providers from '@/components/Providers/Providers'
 
 import './global.css'
 
@@ -10,7 +12,9 @@ type Props = {
 export default function HomeLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={`antialiased ${inter.className}`}>{children}</body>
+      <body className={`antialiased ${inter.className}`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
