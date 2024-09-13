@@ -7,7 +7,9 @@ import {
   ChartBarSquareIcon,
   PresentationChartBarIcon,
   HomeIcon,
-  QuestionMarkCircleIcon
+  QuestionMarkCircleIcon,
+  ExclamationCircleIcon,
+  WindowIcon
 } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -38,7 +40,9 @@ const links = [
     ]
   },
   { name: 'ChatGPT', href: '/chat-gpt', icon: ChatBubbleLeftRightIcon },
-  { name: 'About', href: '/about', icon: QuestionMarkCircleIcon }
+  { name: 'Error example', href: '/error-example', icon: ExclamationCircleIcon },
+  { name: 'Not found example', href: '/path-that-does-not-exist', icon: QuestionMarkCircleIcon },
+  { name: 'About', href: '/about', icon: WindowIcon }
 ]
 
 export default function NavLinks() {
