@@ -19,6 +19,11 @@ const config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        blue: {
+          400: '#2589FE',
+          500: '#0070F3',
+          600: '#2F6FEB'
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -70,9 +75,16 @@ const config = {
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))'
       }
+    },
+    keyframes: {
+      shimmer: {
+        '100%': {
+          transform: 'translateX(100%)'
+        }
+      }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')]
 } satisfies Config
 
 export default config
