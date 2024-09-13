@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
@@ -16,11 +14,11 @@ type Props = {
 export default function CreateInvoiceForm({ customers }: Props) {
   return (
     <form
-      action={(formData) => {
-        createInvoice(formData).then(() => {
-          revalidatePath('/dashboard/invoices')
-          redirect('/dashboard/invoices')
-        })
+      action={async (formData) => {
+        'use server'
+        await createInvoice(formData)
+        revalidatePath('/dashboard/invoices')
+        redirect('/dashboard/invoices')
       }}
     >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">

@@ -1,3 +1,5 @@
+'use server'
+
 import { sql } from '@vercel/postgres'
 import { z } from 'zod'
 
@@ -27,6 +29,7 @@ export async function createInvoice(formData: FormData) {
       VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
     `
   } catch (error) {
+    console.error('Database Error: Failed to Create Invoice.', error)
     return {
       message: 'Database Error: Failed to Create Invoice.'
     }
