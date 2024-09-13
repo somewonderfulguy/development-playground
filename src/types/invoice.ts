@@ -21,3 +21,8 @@ export type InvoicesTable = {
   amount: number
   status: 'pending' | 'paid'
 }
+
+export type CustomerField = {
+  id: string
+  name: string
+}

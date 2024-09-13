@@ -9,9 +9,11 @@ import { useIsErrorDispatch } from '@/contexts'
 type Props = {
   error: Error & { digest?: string }
   reset: () => void
+  title?: string
+  description?: string
 }
 
-export default function ErrorBoundaryAppRouter({ error, reset }: Props) {
+export default function ErrorBoundaryAppRouter({ error, reset, title = 'Something went wrong' }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const setIsError = useIsErrorDispatch()
 
@@ -24,8 +26,8 @@ export default function ErrorBoundaryAppRouter({ error, reset }: Props) {
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="max-w-lg w-full px-4 py-8 bg-card text-center">
         <AlertCircle className="mx-auto h-12 w-12 text-destructive text-red-500" aria-hidden="true" />
-        <h2 className="mt-4 text-2xl font-semibold text-foreground">Something went wrong</h2>
-        <p className="mt-2 text-muted-foreground">We apologize for the inconvenience. Please try again.</p>
+        <h2 className="mt-4 text-2xl font-semibold text-foreground">{title}</h2>
+        <p className="mt-2 text-muted-foreground">{error.message}</p>
         <div className="mt-6">
           <Button onClick={reset} variant="default">
             Try again
