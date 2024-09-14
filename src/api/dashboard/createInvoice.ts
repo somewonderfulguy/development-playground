@@ -1,19 +1,14 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 import { sql } from '@vercel/postgres'
-import { z } from 'zod'
 
-const FormSchema = z.object({
-  id: z.string(),
-  customerId: z.string(),
-  amount: z.coerce.number(),
-  status: z.enum(['pending', 'paid']),
-  date: z.string()
-})
+import { InvoiceFormSchema } from './schemas/invoiceFormSchema'
 
-const CreateInvoice = FormSchema.omit({ id: true, date: true })
+const CreateInvoice = InvoiceFormSchema.omit({ id: true, date: true })
 
-export async function createInvoice(formData: FormData) {
+export async function createInvoice(revalidateRedirectPath: string, formData: FormData) {
   const { customerId, amount, status } = CreateInvoice.parse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
@@ -34,4 +29,6 @@ export async function createInvoice(formData: FormData) {
       message: 'Database Error: Failed to Create Invoice.'
     }
   }
+  revalidatePath('/dashboard/invoices')
+  redirect('/dashboard/invoices')
 }
