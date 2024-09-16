@@ -11,6 +11,7 @@ import {
   ExclamationCircleIcon,
   WindowIcon
 } from '@heroicons/react/24/outline'
+import { BiFootball } from 'react-icons/bi'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -40,6 +41,7 @@ const links = [
     ]
   },
   { name: 'ChatGPT', href: '/chat-gpt', icon: ChatBubbleLeftRightIcon },
+  { name: 'FC Clubs', href: '/fc-clubs', icon: BiFootball },
   { name: 'Error example', href: '/error-example', icon: ExclamationCircleIcon },
   { name: 'Not found example', href: '/path-that-does-not-exist', icon: QuestionMarkCircleIcon },
   { name: 'About', href: '/about', icon: WindowIcon }
@@ -62,7 +64,7 @@ export default function NavLinks() {
 
         const item = (
           <>
-            <LinkIcon className="w-6" />
+            <LinkIcon className="w-6" size="1.8em" />
             <p className="hidden md:block">{link.name}</p>
           </>
         )
