@@ -24,14 +24,19 @@ type TeamsResponse = {
   response: { team: Team; venue: Venue }[]
 }
 
-const transformResponse = (response: TeamsResponse) =>
-  response.response.map(({ team, venue }) => ({
+const transformResponse = (response: TeamsResponse) => {
+  console.log('debug', process.env.RAPIDAPI_KEY)
+
+  console.log('response debug', response)
+
+  return response.response.map(({ team, venue }) => ({
     name: team.name,
     founded: team.founded,
     logo: team.logo,
     venue: venue.name,
     city: venue.city
   }))
+}
 
 const getTeamsByLeague = (league: number) =>
   fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=${league}&season=2024`, {
