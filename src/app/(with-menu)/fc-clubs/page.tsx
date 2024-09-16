@@ -38,7 +38,7 @@ const getTeamsByLeague = (league: number) =>
     method: 'GET',
     headers: {
       'x-rapidapi-host': 'api-football-v1.p.rapidapi.com',
-      'x-rapidapi-key': '03df79ef40msh7cb39e7aff79126p189b51jsn678b9ab862b9'
+      'x-rapidapi-key': process.env.RAPIDAPI_KEY as string
     }
   }).then((response) => response.json()) as Promise<TeamsResponse>
 
