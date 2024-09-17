@@ -1,35 +1,21 @@
 import Image from 'next/image'
 
-type Team = {
-  id: number
-  name: string
-  code: string
-  country: string
-  founded: number
-  national: boolean
-  logo: string
-}
+import { getTeamsByLeague } from '@/features/football/api/teams'
+import { TeamsResponse } from '@/features/football/types/teams'
 
-type Venue = {
-  id: number
-  name: string
-  address: string
-  city: string
-  capacity: number
-  surface: string
-  image: string
-}
+const handleResponse = (response: TeamsResponse) => {
+  if ('message' in response) {
+    console.error(response.message)
 
-type TeamsResponse = {
-  response: { team: Team; venue: Venue }[]
-}
-
-const transformResponse = (response: TeamsResponse) => {
-  console.log('debug', process.env.RAPIDAPI_KEY)
-
-  console.log('response debug', response)
+    throw new Error(
+      response.message.toLowerCase() === 'too many requests'
+        ? 'Football API limit per day is 100 requests. Please try again later.'
+        : response.message
+    )
+  }
 
   return response.response.map(({ team, venue }) => ({
+    id: team.id,
     name: team.name,
     founded: team.founded,
     logo: team.logo,
@@ -38,22 +24,13 @@ const transformResponse = (response: TeamsResponse) => {
   }))
 }
 
-const getTeamsByLeague = (league: number) =>
-  fetch(`https://api-football-v1.p.rapidapi.com/v3/teams?league=${league}&season=2024`, {
-    method: 'GET',
-    headers: {
-      'x-rapidapi-host': 'api-football-v1.p.rapidapi.com',
-      'x-rapidapi-key': process.env.RAPIDAPI_KEY as string
-    }
-  }).then((response) => response.json()) as Promise<TeamsResponse>
-
 const oneHour = 60 * 60 * 1000
 export const revalidate = oneHour * 24
 
 async function getProjects() {
   const teams = await Promise.all([
-    getTeamsByLeague(39).then(transformResponse),
-    getTeamsByLeague(40).then(transformResponse)
+    getTeamsByLeague(39).then(handleResponse),
+    getTeamsByLeague(40).then(handleResponse)
   ]).then((responses) => responses.flat())
   return teams
 }
@@ -67,18 +44,22 @@ export default async function FCClubsPage() {
       <div className="flex flex-wrap">
         {teams.map((team) => (
           <div
-            key={team.name}
-            className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col w-[300px] h-[360px] m-4"
+            key={team.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col w-[300px] h-[340px] m-4 group hover:shadow-lg transition-all duration-300 relative"
           >
             <div className="flex-1 flex items-center justify-center p-4">
-              <div className="relative h-[150px] w-full">
+              <div className="relative h-[150px] w-full scale-95 group-hover:scale-100 transition-scale duration-300">
                 <Image src={team.logo} alt={`${team.name} logo`} objectFit="contain" layout="fill" />
               </div>
             </div>
-            <div className="p-4 bg-gray-100 text-left">
+            <div className="p-4 bg-gray-100 text-left h-[88px]" />
+            <div className="p-4 bg-gray-100 text-left transition-all duration-300 absolute bottom-0 left-0 right-0 group-hover:translate-y-[-22px] h-[88px]">
               <h2 className="text-xl font-bold mb-2">{team.name}</h2>
               <p className="text-sm text-gray-600 line-clamp-1">
                 {team.venue}, {team.city}
+              </p>
+              <p className="pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-gray-400">
+                est. {team.founded}
               </p>
             </div>
           </div>
