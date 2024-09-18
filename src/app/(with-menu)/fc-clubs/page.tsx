@@ -1,50 +1,42 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { getTeamsByLeague } from '@/features/football/api/teams'
-import { TeamsResponse } from '@/features/football/types/teams'
+import { getTeamsByLeague } from '@/features/football/api/teamsApi'
+import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
 
-const handleResponse = (response: TeamsResponse) => {
-  if ('message' in response) {
-    console.error(response.message)
-
-    throw new Error(
-      response.message.toLowerCase() === 'too many requests'
-        ? 'Football API limit per day is 100 requests. Please try again later.'
-        : response.message
-    )
-  }
-
-  return response.response.map(({ team, venue }) => ({
-    id: team.id,
-    name: team.name,
-    founded: team.founded,
-    logo: team.logo,
-    venue: venue.name,
-    city: venue.city
+const handleResponse = (response: TheSportsDBTeamsResponse) => {
+  return response.teams.map((team) => ({
+    id: team.idTeam,
+    name: team.strTeam,
+    founded: +team.intFormedYear,
+    logo: team.strBadge,
+    venue: team.strStadium,
+    city: team.strLocation
   }))
 }
 
 const oneHour = 60 * 60 * 1000
 export const revalidate = oneHour * 24
 
-async function getProjects() {
+async function getTeams() {
   const teams = await Promise.all([
-    getTeamsByLeague(39).then(handleResponse),
-    getTeamsByLeague(40).then(handleResponse)
+    getTeamsByLeague('English%20Premier%20League').then(handleResponse),
+    getTeamsByLeague('English%20League%20Championship').then(handleResponse)
   ]).then((responses) => responses.flat())
   return teams
 }
 
 export default async function FCClubsPage() {
-  const teams = await getProjects()
+  const teams = await getTeams()
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Premier League & EFL Championship Clubs</h1>
       <div className="flex flex-wrap">
         {teams.map((team) => (
-          <div
+          <Link
             key={team.id}
+            href={`/fc-clubs/${team.id}`}
             className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col w-[300px] h-[340px] m-4 group hover:shadow-lg transition-all duration-300 relative"
           >
             <div className="flex-1 flex items-center justify-center p-4">
@@ -62,7 +54,7 @@ export default async function FCClubsPage() {
                 est. {team.founded}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

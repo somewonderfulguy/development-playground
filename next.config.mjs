@@ -7,6 +7,12 @@ const nextConfig = {
         hostname: 'media.api-sports.io',
         port: '',
         pathname: '/football/teams/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thesportsdb.com',
+        port: '',
+        pathname: '/images/media/**'
       }
     ]
   }
