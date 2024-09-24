@@ -74,6 +74,9 @@ const config = {
       },
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))'
+      },
+      spacing: {
+        '18': '4.5rem'
       }
     },
     keyframes: {
