@@ -46,11 +46,11 @@ export default async function FCClubsPage() {
             </div>
             <div className="p-4 h-[88px]" />
             <div className="p-4 bg-primary/[0.05] text-left transition-all duration-300 absolute bottom-0 left-0 right-0 translate-y-[22px] group-hover:translate-y-[0px] h-[110px]">
-              <h2 className="text-xl font-bold mb-2">{team.name}</h2>
-              <p className="text-sm text-gray-600 line-clamp-1">
+              <h2 className="text-xl font-bold mb-2 text-primary">{team.name}</h2>
+              <p className="text-sm line-clamp-1 text-primary/60">
                 {team.venue}, {team.city}
               </p>
-              <p className="pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-gray-400">
+              <p className="pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-primary/40">
                 est. {team.founded}
               </p>
             </div>

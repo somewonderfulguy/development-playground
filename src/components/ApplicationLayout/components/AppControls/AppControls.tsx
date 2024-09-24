@@ -43,7 +43,7 @@ export default function AppControls({ isDrawerOpen, setIsDrawerOpen, isDarkTheme
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-4 left-4 z-20"
+            className="absolute top-4 left-4 z-20 hover:bg-secondary-foreground/[0.05]"
             onClick={() => setIsDrawerOpen((prev) => !prev)}
           >
             {isDrawerOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
