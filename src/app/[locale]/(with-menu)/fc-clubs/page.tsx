@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 import { getTeamsByLeague } from '@/features/football/api/teamsApi'
 import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
+import { setStaticParamsLocale } from 'next-international/server'
+import { getScopedI18n, getStaticParams } from '@/locales/server'
 
 const handleResponse = (response: TheSportsDBTeamsResponse) => {
   return response.teams.map((team) => ({
@@ -18,6 +20,10 @@ const handleResponse = (response: TheSportsDBTeamsResponse) => {
 const oneHour = 60 * 60 * 1000
 export const revalidate = oneHour * 24
 
+export function generateStaticParams() {
+  return getStaticParams()
+}
+
 async function getTeams() {
   const teams = await Promise.all([
     getTeamsByLeague('English%20Premier%20League').then(handleResponse),
@@ -26,12 +32,19 @@ async function getTeams() {
   return teams
 }
 
-export default async function FCClubsPage() {
+type Props = {
+  params: { locale: string }
+}
+
+export default async function FCClubsPage({ params: { locale } }: Props) {
+  setStaticParamsLocale(locale)
+  const t = await getScopedI18n('football')
+
   const teams = await getTeams()
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Premier League & EFL Championship Clubs</h1>
+      <h1 className="text-3xl font-bold mb-6">{t('homeTitle')}</h1>
       <div className="flex flex-wrap">
         {teams.map((team) => (
           <Link
