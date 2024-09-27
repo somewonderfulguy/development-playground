@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import Locale from 'intl-locale-textinfo-polyfill'
 
 import { inter } from '@/constants/fonts'
 import Providers from '@/components/Providers/Providers'
@@ -11,8 +12,10 @@ type Props = {
 }
 
 export default function HomeLayout({ children, params: { locale } }: Props) {
+  const { direction: dir } = new Locale(locale).textInfo
+
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={dir}>
       <body className={`antialiased ${inter.className}`}>
         <Providers locale={locale}>{children}</Providers>
       </body>

@@ -1,19 +1,21 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { MenuIcon, XIcon, MoonIcon, SunIcon, UserIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { useChangeLocale, useCurrentLocale } from '@/locales/client'
 
 import styles from './AppControls.module.css'
 
 const languages = [
-  { code: 'EN', label: 'English' },
-  { code: 'PL', label: 'Polski' },
-  { code: 'UA', label: 'Українська' },
-  { code: 'JP', label: '日本語' }
+  { code: 'en', label: 'English' },
+  { code: 'pl', label: 'Polski' },
+  { code: 'ua', label: 'Українська' },
+  { code: 'jp', label: '日本語' },
+  { code: 'he', label: 'עברית' }
 ]
 
 type Props = {
@@ -24,10 +26,9 @@ type Props = {
 }
 
 export default function AppControls({ isDrawerOpen, setIsDrawerOpen, isDarkTheme, setIsDarkTheme }: Props) {
-  // TODO: Implement language change
-  const [language, setLanguage] = useState('EN')
+  const changeLocale = useChangeLocale()
+  const currentLocale = useCurrentLocale()
 
-  // TODO: Implement theme change
   useEffect(() => {
     if (isDarkTheme) {
       document.documentElement.classList.add('dark')
@@ -71,13 +72,13 @@ export default function AppControls({ isDrawerOpen, setIsDrawerOpen, isDarkTheme
       </Tooltip>
 
       <div className="absolute top-4 left-28 z-20">
-        <Select value={language} onValueChange={setLanguage}>
+        <Select value={currentLocale} onValueChange={changeLocale}>
           <Tooltip>
             <TooltipTrigger asChild>
               <SelectTrigger
                 className={`w-[40px] h-[40px] p-0 hover:bg-accent hover:text-accent-foreground flex items-center justify-center ${styles.buttonDropDown}`}
               >
-                <SelectValue>{language}</SelectValue>
+                <SelectValue>{currentLocale.toUpperCase()}</SelectValue>
               </SelectTrigger>
             </TooltipTrigger>
             <TooltipContent>
@@ -90,7 +91,7 @@ export default function AppControls({ isDrawerOpen, setIsDrawerOpen, isDarkTheme
                 key={lang.code}
                 value={lang.code}
                 className={`${styles.itemDropDown} ${
-                  language === lang.code ? 'bg-secondary font-semibold' : ''
+                  currentLocale === lang.code ? 'bg-secondary font-semibold' : ''
                 } flex items-center px-2 py-1.5 rounded-sm text-sm outline-none focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 cursor-pointer`}
               >
                 {lang.label}

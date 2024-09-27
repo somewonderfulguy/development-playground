@@ -94,3 +94,9 @@ export type TheSportsDBTeam = {
 export type TheSportsDBTeamsResponse = {
   teams: TheSportsDBTeam[]
 }
+
+export type TeamMappingEntry = {
+  thesportsdb_team_id: number
+  api_football_team_id: number
+  team_name: string
+}

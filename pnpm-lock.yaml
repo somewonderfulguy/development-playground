@@ -47,6 +47,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      intl-locale-textinfo-polyfill:
+        specifier: ^2.1.1
+        version: 2.1.1
       lucide-react:
         specifier: ^0.429.0
         version: 0.429.0(react@18.3.1)
@@ -1573,6 +1576,9 @@ packages:
 
   international-types@0.8.1:
     resolution: {integrity: sha512-tajBCAHo4I0LIFlmQ9ZWfjMWVyRffzuvfbXCd6ssFt5u1Zw15DN0UBpVTItXdNa1ls+cpQt3Yw8+TxsfGF8JcA==}
+
+  intl-locale-textinfo-polyfill@2.1.1:
+    resolution: {integrity: sha512-k2J6ejhL75v94reBfX2gYF6yQ5uqtt+jBRQy5f7QSBl3GEI7gMrQ7mAq1GF8txxUsSQZMx7Sa5VekImh+SZtLA==}
 
   invariant@2.2.4:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
@@ -4300,6 +4306,8 @@ snapshots:
       side-channel: 1.0.6
 
   international-types@0.8.1: {}
+
+  intl-locale-textinfo-polyfill@2.1.1: {}
 
   invariant@2.2.4:
     dependencies:

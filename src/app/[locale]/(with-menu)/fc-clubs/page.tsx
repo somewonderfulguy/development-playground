@@ -1,15 +1,24 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getTeamsByLeague } from '@/features/football/api/teamsApi'
+import { getTeamsByLeague, getTeamsMapping } from '@/features/football/api/teamsApi'
 import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
 import { setStaticParamsLocale } from 'next-international/server'
 import { getScopedI18n, getStaticParams } from '@/locales/server'
 
-const handleResponse = (response: TheSportsDBTeamsResponse) => {
+// TODO: move to utils
+function toCamelCase(str: string) {
+  return str
+    .trim()
+    .toLowerCase()
+    .split(/[\s-_]+/)
+    .map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
+    .join('')
+}
+
+const handleSportsDBResponse = (response: TheSportsDBTeamsResponse) => {
   return response.teams.map((team) => ({
     id: team.idTeam,
-    name: team.strTeam,
     founded: +team.intFormedYear,
     logo: team.strBadge,
     venue: team.strStadium,
@@ -25,11 +34,25 @@ export function generateStaticParams() {
 }
 
 async function getTeams() {
-  const teams = await Promise.all([
-    getTeamsByLeague('English%20Premier%20League').then(handleResponse),
-    getTeamsByLeague('English%20League%20Championship').then(handleResponse)
+  const sportsDBTeams = await Promise.all([
+    getTeamsByLeague('English%20Premier%20League').then(handleSportsDBResponse),
+    getTeamsByLeague('English%20League%20Championship').then(handleSportsDBResponse)
   ]).then((responses) => responses.flat())
-  return teams
+
+  const teamsMapping = await getTeamsMapping()
+
+  const t = await getScopedI18n('football')
+
+  return sportsDBTeams
+    .map((team) => {
+      const mapping = teamsMapping.find((mapping) => mapping.thesportsdb_team_id === +team.id)
+
+      return {
+        ...team,
+        name: t(`clubNames.${mapping?.team_name}` as 'clubNames.arsenal')
+      }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 type Props = {
@@ -38,6 +61,7 @@ type Props = {
 
 export default async function FCClubsPage({ params: { locale } }: Props) {
   setStaticParamsLocale(locale)
+
   const t = await getScopedI18n('football')
 
   const teams = await getTeams()
