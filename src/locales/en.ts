@@ -1,7 +1,7 @@
 export default {
   football: {
     homeTitle: 'Premier League & EFL Championship Clubs',
-    clubNames: {
+    teamNames: {
       arsenal: 'Arsenal',
       astonVilla: 'Aston Villa',
       bournemouth: 'AFC Bournemouth',

@@ -1,7 +1,7 @@
 export default {
   football: {
     homeTitle: 'プレミアリーグとEFLチャンピオンシップのクラブ',
-    clubNames: {
+    teamNames: {
       arsenal: 'アーセナル',
       astonVilla: 'アストン・ヴィラ',
       bournemouth: 'AFCボーンマス',

@@ -1,7 +1,7 @@
 export default {
   football: {
     homeTitle: "Клуби Прем'єр-ліги та Чемпіонату Футбольної ліги Англії",
-    clubNames: {
+    teamNames: {
       arsenal: 'Арсенал',
       astonVilla: 'Астон Вілла',
       bournemouth: 'Борнмут',

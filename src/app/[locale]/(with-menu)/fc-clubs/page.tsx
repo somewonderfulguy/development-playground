@@ -6,16 +6,6 @@ import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
 import { setStaticParamsLocale } from 'next-international/server'
 import { getScopedI18n, getStaticParams } from '@/locales/server'
 
-// TODO: move to utils
-function toCamelCase(str: string) {
-  return str
-    .trim()
-    .toLowerCase()
-    .split(/[\s-_]+/)
-    .map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
-    .join('')
-}
-
 const handleSportsDBResponse = (response: TheSportsDBTeamsResponse) => {
   return response.teams.map((team) => ({
     id: team.idTeam,
@@ -49,7 +39,7 @@ async function getTeams() {
 
       return {
         ...team,
-        name: t(`clubNames.${mapping?.team_name}` as 'clubNames.arsenal')
+        name: t(`teamNames.${mapping?.team_name}` as 'teamNames.arsenal')
       }
     })
     .sort((a, b) => a.name.localeCompare(b.name))

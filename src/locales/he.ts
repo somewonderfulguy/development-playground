@@ -1,7 +1,7 @@
 export default {
   football: {
     homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,
-    clubNames: {
+    teamNames: {
       arsenal: 'Arsenal',
       astonVilla: 'Aston Villa',
       bournemouth: 'AFC Bournemouth',
