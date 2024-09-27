@@ -1,6 +1,6 @@
 export default {
   football: {
-    homeTitle: 'Premier League & EFL Championship Clubs',
+    homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,
     clubNames: {
       arsenal: 'Arsenal',
       astonVilla: 'Aston Villa',
