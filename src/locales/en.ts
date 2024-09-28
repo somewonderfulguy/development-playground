@@ -30,22 +30,22 @@ export default {
       newcastle: 'Newcastle United',
       norwich: 'Norwich City',
       nottinghamForest: 'Nottingham Forest',
-      oxfordUtd: 'Oxford Utd',
-      plymouth: 'Plymouth',
+      oxfordUtd: 'Oxford United',
+      plymouth: 'Plymouth Argyle',
       portsmouth: 'Portsmouth',
-      preston: 'Preston',
-      qpr: 'QPR',
+      preston: 'Preston North End',
+      qpr: 'Queens Park Rangers (QPR)',
       sheffieldUnited: 'Sheffield United',
-      sheffieldWeds: 'Sheffield Weds',
+      sheffieldWeds: 'Sheffield Wednesday',
       southampton: 'Southampton',
-      stoke: 'Stoke',
+      stoke: 'Stoke City',
       sunderland: 'Sunderland',
-      swansea: 'Swansea',
-      tottenham: 'Tottenham',
+      swansea: 'Swansea City',
+      tottenham: 'Tottenham Hotspur',
       watford: 'Watford',
-      westBrom: 'West Brom',
-      westHam: 'West Ham',
-      wolves: 'Wolves'
+      westBrom: 'West Bromwich Albion',
+      westHam: 'West Ham United',
+      wolves: 'Wolverhampton Wanderers'
     }
   }
 } as const

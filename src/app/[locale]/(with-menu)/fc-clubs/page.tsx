@@ -73,7 +73,7 @@ export default async function FCClubsPage({ params: { locale } }: Props) {
             </div>
             <div className="p-4 h-[88px]" />
             <div className="p-4 bg-primary/[0.05] text-left transition-all duration-300 absolute bottom-0 left-0 right-0 translate-y-[22px] group-hover:translate-y-[0px] h-[110px]">
-              <h2 className="text-xl font-bold mb-2 text-primary">{team.name}</h2>
+              <h2 className="text-xl line-clamp-1 font-bold mb-2 text-primary">{team.name}</h2>
               <p className="text-sm line-clamp-1 text-primary/60">
                 {team.venue}, {team.city}
               </p>
