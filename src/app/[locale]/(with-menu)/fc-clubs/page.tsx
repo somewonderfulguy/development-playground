@@ -1,17 +1,27 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getTeamsByLeague, getTeamsMapping } from '@/features/football/api/teamsApi'
+import { getTeamsByLeague, getTeamsMapping, getVenuesMapping } from '@/features/football/api/teamsApi'
 import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
 import { setStaticParamsLocale } from 'next-international/server'
 import { getScopedI18n, getStaticParams } from '@/locales/server'
+
+function toCamelCase(str: string) {
+  return str
+    .trim()
+    .toLowerCase()
+    .split(/[\s-_]+/)
+    .map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
+    .join('')
+}
 
 const handleSportsDBResponse = (response: TheSportsDBTeamsResponse) => {
   return response.teams.map((team) => ({
     id: team.idTeam,
     founded: +team.intFormedYear,
     logo: team.strBadge,
-    venue: team.strStadium,
+    venue: toCamelCase(team.strStadium),
+    venueId: team.idVenue,
     city: team.strLocation
   }))
 }
@@ -29,17 +39,25 @@ async function getTeams() {
     getTeamsByLeague('English%20League%20Championship').then(handleSportsDBResponse)
   ]).then((responses) => responses.flat())
 
-  const teamsMapping = await getTeamsMapping()
+  const [teamsMapping, venuesMapping] = await Promise.all([getTeamsMapping(), getVenuesMapping()])
 
-  const t = await getScopedI18n('football')
+  const footbalT = await getScopedI18n('football')
+  const teamsT = await getScopedI18n('football.teamNames')
+  const venuesT = await getScopedI18n('football.venues')
+
+  // <p>{t('welcome', { name: 'John' })}</p>
 
   return sportsDBTeams
-    .map((team) => {
-      const mapping = teamsMapping.find((mapping) => mapping.thesportsdb_team_id === +team.id)
+    .map(({ venueId, ...team }) => {
+      const teamMapping = teamsMapping.find((mapping) => mapping.thesportsdb_team_id === +team.id)
+      const venueMapping = venuesMapping.find((mapping) => mapping.thesportsdb_venue_id === +venueId)
+      const venueName = venueMapping?.venue_name as 'amexStadium'
 
       return {
         ...team,
-        name: t(`teamNames.${mapping?.team_name}` as 'teamNames.arsenal')
+        name: teamsT(teamMapping?.team_name as 'arsenal'),
+        city: venuesT(`${venueName}.city`),
+        venue: venuesT(`${venueName}.name`)
       }
     })
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -80,7 +98,7 @@ export default async function FCClubsPage({ params: { locale } }: Props) {
                 {team.venue}, {team.city}
               </p>
               <p className="pb-4 text-sm text-primary/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                est. {team.founded}
+                {t('established', { year: team.founded })}
               </p>
             </div>
           </Link>

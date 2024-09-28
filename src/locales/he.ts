@@ -1,5 +1,6 @@
 export default {
   football: {
+    established: 'נוסד {year}	',
     homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,
     teamNames: {
       arsenal: 'ארסנל',
@@ -46,6 +47,184 @@ export default {
       westBrom: `וסט ברומיץ' אלביון`,
       westHam: 'וסטהאם יונייטד',
       wolves: 'וולברהמפטון וונדררס'
+    },
+    venues: {
+      amexStadium: {
+        name: 'אמקס',
+        city: 'פאלמר, ברייטון'
+      },
+      anfield: {
+        name: 'אנפילד',
+        city: 'ליברפול'
+      },
+      ashtonGate: {
+        name: 'אשטון גייט',
+        city: 'בריסטול'
+      },
+      bet365Stadium: {
+        name: 'בט365',
+        city: 'סטוק-און-טרנט'
+      },
+      bramallLane: {
+        name: 'ברמאל ליין',
+        city: 'שפילד'
+      },
+      brentfordCommunityStadium: {
+        name: `ג'יטק קומיוניטי`,
+        city: 'לונדון'
+      },
+      cardiffCityStadium: {
+        name: 'אצטדיון קרדיף סיטי',
+        city: 'קרדיף'
+      },
+      carrowRoad: {
+        name: 'קארו רואד',
+        city: "נוריץ'"
+      },
+      cityGround: {
+        name: 'סיטי גראונד',
+        city: 'נוטינגהאם'
+      },
+      cravenCottage: {
+        name: "קרייבן קוטג'",
+        city: 'לונדון'
+      },
+      deepdale: {
+        name: 'דיפדייל',
+        city: 'פרסטון'
+      },
+      ellandRoad: {
+        name: 'אלנד רואד',
+        city: 'לידס'
+      },
+      emiratesStadium: {
+        name: 'אמירייטס',
+        city: 'לונדון'
+      },
+      etihadStadium: {
+        name: 'אתיחאד',
+        city: "מנצ'סטר"
+      },
+      ewoodPark: {
+        name: 'אייווד פארק',
+        city: 'בלקברן'
+      },
+      frattonPark: {
+        name: 'פראטון פארק',
+        city: "פורטסמות'"
+      },
+      goodisonPark: {
+        name: 'גודיסון פארק',
+        city: 'ליברפול'
+      },
+      hillsborough: {
+        name: 'הילסבורו',
+        city: 'שפילד'
+      },
+      homePark: {
+        name: 'הום פארק',
+        city: "פלימות'"
+      },
+      kassamStadium: {
+        name: 'קסאם',
+        city: 'אוקספורד'
+      },
+      kcStadium: {
+        name: 'MKM',
+        city: 'קינגסטון אפון האל'
+      },
+      kenilworthRoad: {
+        name: "קנילוורת' רואד",
+        city: 'לוטון'
+      },
+      kingPowerStadium: {
+        name: 'קינג פאוור',
+        city: 'לסטר'
+      },
+      loftusRoad: {
+        name: 'אצטדיון קיאן פרינס פאונדיישן',
+        city: 'לונדון'
+      },
+      londonStadium: {
+        name: 'לונדון',
+        city: 'לונדון'
+      },
+      molineuxStadium: {
+        name: 'מוליניו',
+        city: 'וולברהמפטון'
+      },
+      oldTrafford: {
+        name: 'אולד טראפורד',
+        city: "מנצ'סטר"
+      },
+      portmanRoad: {
+        name: 'פורטמן רואד',
+        city: "איפסוויץ'"
+      },
+      prideParkStadium: {
+        name: 'פרייד פארק',
+        city: 'דרבי'
+      },
+      riversideStadium: {
+        name: 'ריברסייד',
+        city: 'מידלסברו'
+      },
+      selhurstPark: {
+        name: 'סלהרסט פארק',
+        city: 'לונדון'
+      },
+      stJamesPark: {
+        name: "סנט ג'יימס פארק",
+        city: 'ניוקאסל אפון טיין'
+      },
+      stMary: {
+        name: "סנט מרי'ס",
+        city: "סאות'המפטון"
+      },
+      stadiumOfLight: {
+        name: 'אצטדיון האור',
+        city: 'סנדרלנד'
+      },
+      stamfordBridge: {
+        name: "סטמפורד ברידג'",
+        city: 'לונדון'
+      },
+      swanseaComStadium: {
+        name: 'סוונסי.קום',
+        city: 'סוונסי'
+      },
+      theCoventryBuildingSocietyArena: {
+        name: 'קובנטרי בילדינג סוסייטי ארנה',
+        city: 'קובנטרי'
+      },
+      theDen: {
+        name: 'הדן',
+        city: 'לונדון'
+      },
+      theHawthorns: {
+        name: "הות'ורנס",
+        city: "ווסט ברומיץ'"
+      },
+      tottenhamHotspurStadium: {
+        name: 'טוטנהאם הוטספר',
+        city: 'לונדון'
+      },
+      turfMoor: {
+        name: 'טרף מור',
+        city: 'ברנלי'
+      },
+      vicarageRoad: {
+        name: "ויקארג' רואד",
+        city: 'ווטפורד'
+      },
+      villaPark: {
+        name: 'וילה פארק',
+        city: 'ברמינגהם'
+      },
+      vitalityStadium: {
+        name: 'ויטליטי',
+        city: "בורנמות'"
+      }
     }
   }
 } as const

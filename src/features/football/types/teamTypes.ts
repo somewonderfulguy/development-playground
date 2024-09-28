@@ -100,3 +100,10 @@ export type TeamMappingEntry = {
   api_football_team_id: number
   team_name: string
 }
+
+export type VenueMappingEntry = {
+  thesportsdb_venue_id: number
+  api_football_venue_id: number
+  venue_name: string
+  id: number
+}

@@ -1,5 +1,6 @@
 export default {
   football: {
+    established: '設立 {year}年',
     homeTitle: 'プレミアリーグとEFLチャンピオンシップのクラブ',
     teamNames: {
       arsenal: 'アーセナル',
@@ -46,6 +47,184 @@ export default {
       westBrom: 'ウェスト・ブロムウィッチ・アルビオン',
       westHam: 'ウェストハム・ユナイテッド',
       wolves: 'ウルヴァーハンプトン・ワンダラーズ'
+    },
+    venues: {
+      amexStadium: {
+        name: 'アメックス',
+        city: 'ファルマー、ブライトン'
+      },
+      anfield: {
+        name: 'アンフィールド',
+        city: 'リヴァプール'
+      },
+      ashtonGate: {
+        name: 'アシュトン・ゲート',
+        city: 'ブリストル'
+      },
+      bet365Stadium: {
+        name: 'ベット365',
+        city: 'ストーク＝オン＝トレント'
+      },
+      bramallLane: {
+        name: 'ブラムオール・レーン',
+        city: 'シェフィールド'
+      },
+      brentfordCommunityStadium: {
+        name: 'ジーテック・コミュニティ',
+        city: 'ロンドン'
+      },
+      cardiffCityStadium: {
+        name: 'カーディフ・シティ',
+        city: 'カーディフ'
+      },
+      carrowRoad: {
+        name: 'キャロウ・ロード',
+        city: 'ノリッジ'
+      },
+      cityGround: {
+        name: 'シティ・グラウンド',
+        city: 'ノッティンガム'
+      },
+      cravenCottage: {
+        name: 'クレイヴン・コテージ',
+        city: 'ロンドン'
+      },
+      deepdale: {
+        name: 'ディープデール',
+        city: 'プレストン'
+      },
+      ellandRoad: {
+        name: 'エランド・ロード',
+        city: 'リーズ'
+      },
+      emiratesStadium: {
+        name: 'エミレーツ',
+        city: 'ロンドン'
+      },
+      etihadStadium: {
+        name: 'エティハド',
+        city: 'マンチェスター'
+      },
+      ewoodPark: {
+        name: 'イーウッド・パーク',
+        city: 'ブラックバーン'
+      },
+      frattonPark: {
+        name: 'フラットン・パーク',
+        city: 'ポーツマス'
+      },
+      goodisonPark: {
+        name: 'グディソン・パーク',
+        city: 'リヴァプール'
+      },
+      hillsborough: {
+        name: 'ヒルズボロ',
+        city: 'シェフィールド'
+      },
+      homePark: {
+        name: 'ホーム・パーク',
+        city: 'プリマス'
+      },
+      kassamStadium: {
+        name: 'カサム',
+        city: 'オックスフォード'
+      },
+      kcStadium: {
+        name: 'MKM',
+        city: 'キングストン・アポン・ハル'
+      },
+      kenilworthRoad: {
+        name: 'ケニルワース・ロード',
+        city: 'ルートン'
+      },
+      kingPowerStadium: {
+        name: 'キング・パワー',
+        city: 'レスター'
+      },
+      loftusRoad: {
+        name: 'キヤン・プリンス・ファウンデーション',
+        city: 'ロンドン'
+      },
+      londonStadium: {
+        name: 'ロンドン',
+        city: 'ロンドン'
+      },
+      molineuxStadium: {
+        name: 'モリニュー',
+        city: 'ウルヴァーハンプトン'
+      },
+      oldTrafford: {
+        name: 'オールド・トラッフォード',
+        city: 'マンチェスター'
+      },
+      portmanRoad: {
+        name: 'ポートマン・ロード',
+        city: 'イプスウィッチ'
+      },
+      prideParkStadium: {
+        name: 'プライド・パーク',
+        city: 'ダービー'
+      },
+      riversideStadium: {
+        name: 'リバーサイド',
+        city: 'ミドルズブラ'
+      },
+      selhurstPark: {
+        name: 'セルハースト・パーク',
+        city: 'ロンドン'
+      },
+      stJamesPark: {
+        name: 'セント・ジェームズ・パーク',
+        city: 'ニューカッスル・アポン・タイン'
+      },
+      stMary: {
+        name: 'セント・メリーズ',
+        city: 'サウサンプトン'
+      },
+      stadiumOfLight: {
+        name: 'スタジアム・オブ・ライト',
+        city: 'サンダーランド'
+      },
+      stamfordBridge: {
+        name: 'スタンフォード・ブリッジ',
+        city: 'ロンドン'
+      },
+      swanseaComStadium: {
+        name: 'スウォンジー・ドットコム',
+        city: 'スウォンジー'
+      },
+      theCoventryBuildingSocietyArena: {
+        name: 'コヴェントリー・ビルディング・ソサエティ・アリーナ',
+        city: 'コヴェントリー'
+      },
+      theDen: {
+        name: 'ザ・デン',
+        city: 'ロンドン'
+      },
+      theHawthorns: {
+        name: 'ザ・ホーソンズ',
+        city: 'ウェスト・ブロムウィッチ'
+      },
+      tottenhamHotspurStadium: {
+        name: 'トッテナム・ホットスパー',
+        city: 'ロンドン'
+      },
+      turfMoor: {
+        name: 'ターフ・ムーア',
+        city: 'バーンリー'
+      },
+      vicarageRoad: {
+        name: 'ヴィカレージ・ロード',
+        city: 'ワトフォード'
+      },
+      villaPark: {
+        name: 'ヴィラ・パーク',
+        city: 'バーミンガム'
+      },
+      vitalityStadium: {
+        name: 'バイタリティ',
+        city: 'ボーンマス'
+      }
     }
   }
 } as const

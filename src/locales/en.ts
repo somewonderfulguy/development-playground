@@ -1,5 +1,6 @@
 export default {
   football: {
+    established: 'est. {year}',
     homeTitle: 'Premier League & EFL Championship Clubs',
     teamNames: {
       arsenal: 'Arsenal',
@@ -46,6 +47,184 @@ export default {
       westBrom: 'West Bromwich Albion',
       westHam: 'West Ham United',
       wolves: 'Wolverhampton Wanderers'
+    },
+    venues: {
+      amexStadium: {
+        name: 'Amex',
+        city: 'Falmer, Brighton'
+      },
+      anfield: {
+        name: 'Anfield',
+        city: 'Liverpool'
+      },
+      ashtonGate: {
+        name: 'Ashton Gate',
+        city: 'Bristol'
+      },
+      bet365Stadium: {
+        name: 'bet365',
+        city: 'Stoke-on-Trent'
+      },
+      bramallLane: {
+        name: 'Bramall Lane',
+        city: 'Sheffield'
+      },
+      brentfordCommunityStadium: {
+        name: 'Gtech Community',
+        city: 'London'
+      },
+      cardiffCityStadium: {
+        name: 'Cardiff City',
+        city: 'Cardiff'
+      },
+      carrowRoad: {
+        name: 'Carrow Road',
+        city: 'Norwich'
+      },
+      cityGround: {
+        name: 'City Ground',
+        city: 'Nottingham'
+      },
+      cravenCottage: {
+        name: 'Craven Cottage',
+        city: 'London'
+      },
+      deepdale: {
+        name: 'Deepdale',
+        city: 'Preston'
+      },
+      ellandRoad: {
+        name: 'Elland Road',
+        city: 'Leeds'
+      },
+      emiratesStadium: {
+        name: 'Emirates',
+        city: 'London'
+      },
+      etihadStadium: {
+        name: 'Etihad',
+        city: 'Manchester'
+      },
+      ewoodPark: {
+        name: 'Ewood Park',
+        city: 'Blackburn'
+      },
+      frattonPark: {
+        name: 'Fratton Park',
+        city: 'Portsmouth'
+      },
+      goodisonPark: {
+        name: 'Goodison Park',
+        city: 'Liverpool'
+      },
+      hillsborough: {
+        name: 'Hillsborough',
+        city: 'Sheffield'
+      },
+      homePark: {
+        name: 'Home Park',
+        city: 'Plymouth'
+      },
+      kassamStadium: {
+        name: 'Kassam',
+        city: 'Oxford'
+      },
+      kcStadium: {
+        name: 'MKM',
+        city: 'Kingston upon Hull'
+      },
+      kenilworthRoad: {
+        name: 'Kenilworth Road',
+        city: 'Luton'
+      },
+      kingPowerStadium: {
+        name: 'King Power',
+        city: 'Leicester'
+      },
+      loftusRoad: {
+        name: 'Kiyan Prince Foundation',
+        city: 'London'
+      },
+      londonStadium: {
+        name: 'London',
+        city: 'London'
+      },
+      molineuxStadium: {
+        name: 'Molineux',
+        city: 'Wolverhampton'
+      },
+      oldTrafford: {
+        name: 'Old Trafford',
+        city: 'Manchester'
+      },
+      portmanRoad: {
+        name: 'Portman Road',
+        city: 'Ipswich'
+      },
+      prideParkStadium: {
+        name: 'Pride Park',
+        city: 'Derby'
+      },
+      riversideStadium: {
+        name: 'Riverside',
+        city: 'Middlesbrough'
+      },
+      selhurstPark: {
+        name: 'Selhurst Park',
+        city: 'London'
+      },
+      stJamesPark: {
+        name: "St. James' Park",
+        city: 'Newcastle upon Tyne'
+      },
+      stMary: {
+        name: "St. Mary's",
+        city: 'Southampton'
+      },
+      stadiumOfLight: {
+        name: 'Stadium of Light',
+        city: 'Sunderland'
+      },
+      stamfordBridge: {
+        name: 'Stamford Bridge',
+        city: 'London'
+      },
+      swanseaComStadium: {
+        name: 'Swansea.com',
+        city: 'Swansea'
+      },
+      theCoventryBuildingSocietyArena: {
+        name: 'Coventry Building Society Arena',
+        city: 'Coventry'
+      },
+      theDen: {
+        name: 'The Den',
+        city: 'London'
+      },
+      theHawthorns: {
+        name: 'The Hawthorns',
+        city: 'West Bromwich'
+      },
+      tottenhamHotspurStadium: {
+        name: 'Tottenham Hotspur',
+        city: 'London'
+      },
+      turfMoor: {
+        name: 'Turf Moor',
+        city: 'Burnley'
+      },
+      vicarageRoad: {
+        name: 'Vicarage Road',
+        city: 'Watford'
+      },
+      villaPark: {
+        name: 'Villa Park',
+        city: 'Birmingham'
+      },
+      vitalityStadium: {
+        name: 'Vitality',
+        city: 'Bournemouth'
+      }
     }
   }
 } as const
