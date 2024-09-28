@@ -86,13 +86,13 @@ export default function AppNav() {
                   href={link.href}
                   className={`${
                     pathname === link.href && 'bg-primary/[0.05] text-primary'
-                  } flex items-center gap-2 p-2 rounded-lg hover:bg-primary/[0.05] text-sm`}
+                  } flex items-center gap-2 rounded-lg p-2 text-sm hover:bg-primary/[0.05]`}
                 >
                   {item}
                 </Link>
               ) : (
                 <button
-                  className="flex items-center justify-start gap-2 w-full p-2 rounded-lg hover:bg-primary/[0.05] text-sm"
+                  className="flex w-full items-center justify-start gap-2 rounded-lg p-2 text-sm hover:bg-primary/[0.05]"
                   style={{ fontWeight: childrenHrefs.includes(pathname) ? 'bold' : 'normal' }}
                   onClick={() => setOpenItems((prev) => ({ ...prev, [link.name]: !prev[link.name] }))}
                 >

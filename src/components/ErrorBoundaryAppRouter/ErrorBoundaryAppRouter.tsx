@@ -23,8 +23,8 @@ export default function ErrorBoundaryAppRouter({ error, reset, title = 'Somethin
   }, [setIsError])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="max-w-lg w-full px-4 py-8 bg-card text-center">
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="w-full max-w-lg bg-card px-4 py-8 text-center">
         <AlertCircle className="mx-auto h-12 w-12 text-destructive text-red-500" aria-hidden="true" />
         <h2 className="mt-4 text-2xl font-semibold text-foreground">{title}</h2>
         <p className="mt-2 text-muted-foreground">{error.message}</p>
@@ -34,17 +34,17 @@ export default function ErrorBoundaryAppRouter({ error, reset, title = 'Somethin
           </Button>
         </div>
         {process.env.NODE_ENV === 'development' && (
-          <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full mt-4">
+          <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mt-4 w-full">
             <CollapsibleTrigger asChild>
-              <Button variant="ghost" className="flex items-center gap-1 w-full justify-start">
+              <Button variant="ghost" className="flex w-full items-center justify-start gap-1">
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${isOpen ? '' : 'transform -rotate-90'}`}
+                  className={`h-4 w-4 transition-transform duration-200 ${isOpen ? '' : '-rotate-90 transform'}`}
                 />
                 <span>View error details</span>
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <pre className="text-left bg-muted p-4 rounded-md overflow-auto text-sm">
+              <pre className="overflow-auto rounded-md bg-muted p-4 text-left text-sm">
                 <code>{error.stack}</code>
               </pre>
             </CollapsibleContent>

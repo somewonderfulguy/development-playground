@@ -27,12 +27,12 @@ export default function Chat() {
     <div className="flex flex-col">
       {messages.map((message, idx) => (
         <div key={idx} className={`mb-5 flex flex-col ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
-          <div className={`${message.role === 'user' ? 'bg-blue-500' : 'bg-gray-500 text-black'} rounded-md py-2 px-8`}>
+          <div className={`${message.role === 'user' ? 'bg-blue-500' : 'bg-gray-500 text-black'} rounded-md px-8 py-2`}>
             {message.content}
           </div>
         </div>
       ))}
-      <div className="flex border-t-2 border-t-gray-500 pt-3 mt-3">
+      <div className="mt-3 flex border-t-2 border-t-gray-500 pt-3">
         <Input
           className="flex-grow text-xl"
           placeholder="Question"

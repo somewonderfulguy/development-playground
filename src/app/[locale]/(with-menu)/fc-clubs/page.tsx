@@ -58,26 +58,28 @@ export default async function FCClubsPage({ params: { locale } }: Props) {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">{t('homeTitle')}</h1>
+      <h1 className="mb-6 text-3xl font-bold">{t('homeTitle')}</h1>
       <div className="flex flex-wrap">
         {teams.map((team) => (
           <Link
             key={team.id}
             href={`/fc-clubs/${team.id}`}
-            className="bg-secondary rounded-lg shadow-md overflow-hidden flex flex-col w-[300px] h-[340px] m-4 group hover:shadow-lg transition-all duration-300 relative"
+            className="group relative m-4 flex h-[340px] w-[300px] flex-col overflow-hidden rounded-lg bg-secondary shadow-md transition-all duration-300 hover:shadow-lg"
           >
-            <div className="flex-1 flex items-center justify-center p-4">
-              <div className="relative h-[150px] w-full scale-95 group-hover:scale-100 transition-scale duration-300">
+            <div className="flex flex-1 items-center justify-center p-4">
+              <div className="transition-scale relative h-[150px] w-full scale-95 duration-300 group-hover:scale-100">
                 <Image src={team.logo} alt={`${team.name} logo`} objectFit="contain" layout="fill" />
               </div>
             </div>
-            <div className="p-4 h-[88px]" />
-            <div className="p-4 bg-primary/[0.05] text-left transition-all duration-300 absolute bottom-0 left-0 right-0 translate-y-[22px] group-hover:translate-y-[0px] h-[110px]">
-              <h2 className="text-xl line-clamp-1 font-bold mb-2 text-primary">{team.name}</h2>
-              <p className="text-sm line-clamp-1 text-primary/60">
+            <div className="h-[88px] p-4" />
+            <div className="absolute bottom-0 left-0 right-0 h-[110px] translate-y-[22px] bg-primary/[0.05] p-4 transition-all duration-300 group-hover:translate-y-[0px]">
+              <h2 title={team.name} className="mb-2 line-clamp-1 text-xl font-bold text-primary">
+                {team.name}
+              </h2>
+              <p title={`${team.venue} ${team.city}`} className="line-clamp-1 text-sm text-primary/60">
                 {team.venue}, {team.city}
               </p>
-              <p className="pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-primary/40">
+              <p className="pb-4 text-sm text-primary/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 est. {team.founded}
               </p>
             </div>

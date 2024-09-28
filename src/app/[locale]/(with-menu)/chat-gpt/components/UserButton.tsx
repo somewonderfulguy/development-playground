@@ -2,12 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
@@ -32,9 +27,7 @@ export default function UserButton({
           <DropdownMenuTrigger asChild>
             <Avatar>
               <AvatarImage src={session?.user?.image!} />
-              <AvatarFallback>
-                {getFirstTwoCapitalLetters(session?.user?.name)}
-              </AvatarFallback>
+              <AvatarFallback>{getFirstTwoCapitalLetters(session?.user?.name)}</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -48,9 +41,7 @@ export default function UserButton({
           </DropdownMenuContent>
         </DropdownMenu>
       )}
-      {status === 'unauthenticated' && (
-        <Button onClick={() => onSignIn()}>Sign in</Button>
-      )}
+      {status === 'unauthenticated' && <Button onClick={() => onSignIn()}>Sign in</Button>}
     </div>
   )
 }

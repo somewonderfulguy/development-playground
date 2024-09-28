@@ -23,12 +23,12 @@ export default function NavImage() {
         isError
           ? error
           : pathname.startsWith('/chat-gpt')
-          ? chatGpt
-          : pathname.startsWith('/dashboard')
-          ? nextjs
-          : pathname === '/about'
-          ? about
-          : unknown
+            ? chatGpt
+            : pathname.startsWith('/dashboard')
+              ? nextjs
+              : pathname === '/about'
+                ? about
+                : unknown
       }
       width={240}
       height={134}
