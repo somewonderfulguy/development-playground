@@ -226,5 +226,15 @@ export default {
         city: 'ボーンマス'
       }
     }
+  },
+  nav: {
+    about: '概要',
+    chatGPT: 'ChatGPT',
+    dashboard: 'ダッシュボード',
+    'dashboard.main': 'メイン',
+    'dashboard.invoices': '請求書',
+    'dashboard.customers': '顧客',
+    fcClubs: 'サッカークラブ',
+    home: 'ホーム'
   }
 } as const

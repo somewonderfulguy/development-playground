@@ -226,5 +226,15 @@ export default {
         city: 'Борнмут'
       }
     }
+  },
+  nav: {
+    about: 'Про сайт',
+    chatGPT: 'ChatGPT',
+    dashboard: 'Панель керування',
+    'dashboard.main': 'Головна',
+    'dashboard.invoices': 'Рахунки',
+    'dashboard.customers': 'Клієнти',
+    fcClubs: 'Футбольні клуби',
+    home: 'Головна'
   }
 } as const

@@ -1,6 +1,6 @@
 export default {
   football: {
-    established: 'נוסד {year}	',
+    established: 'נוסד {year}',
     homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,
     teamNames: {
       arsenal: 'ארסנל',
@@ -226,5 +226,15 @@ export default {
         city: "בורנמות'"
       }
     }
+  },
+  nav: {
+    about: 'אודות',
+    chatGPT: 'ChatGPT',
+    dashboard: 'לוח מחוונים',
+    'dashboard.main': 'ראשי',
+    'dashboard.invoices': 'חשבוניות',
+    'dashboard.customers': 'לקוחות',
+    fcClubs: 'מועדוני כדורגל',
+    home: 'דף הבית'
   }
 } as const

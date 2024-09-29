@@ -41,7 +41,6 @@ async function getTeams() {
 
   const [teamsMapping, venuesMapping] = await Promise.all([getTeamsMapping(), getVenuesMapping()])
 
-  const footbalT = await getScopedI18n('football')
   const teamsT = await getScopedI18n('football.teamNames')
   const venuesT = await getScopedI18n('football.venues')
 

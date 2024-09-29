@@ -23,7 +23,6 @@ export default function ApplicationLayout({ children }: Props) {
 
   return (
     <TooltipProvider>
-      {/* <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} z-50 flex items-center space-x-4 ${isRTL ? 'space-x-reverse' : ''}`}> */}
       <div className={`relative h-screen w-full overflow-hidden ${isDarkTheme ? 'dark' : ''}`}>
         <AppControls
           isDarkTheme={isDarkTheme}

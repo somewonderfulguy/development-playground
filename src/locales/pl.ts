@@ -226,5 +226,15 @@ export default {
         city: 'Bournemouth'
       }
     }
+  },
+  nav: {
+    about: 'O stronie',
+    chatGPT: 'ChatGPT',
+    dashboard: 'Panel sterowania',
+    'dashboard.main': 'Główna',
+    'dashboard.invoices': 'Faktury',
+    'dashboard.customers': 'Klienci',
+    fcClubs: 'Kluby piłkarskie',
+    home: 'Strona główna'
   }
 } as const

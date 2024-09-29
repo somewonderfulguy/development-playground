@@ -24,39 +24,44 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment, useState } from 'react'
 import clsx from 'clsx'
+import { useScopedI18n } from '@/locales/client'
 
-const links = [
-  {
-    name: 'Home',
-    href: '/',
-    icon: HomeIcon
-  },
-  {
-    name: 'Dashboard',
-    icon: PresentationChartBarIcon,
-    children: [
-      {
-        name: 'Main',
-        href: '/dashboard',
-        icon: ChartBarSquareIcon
-      },
-      {
-        name: 'Invoices',
-        href: '/dashboard/invoices',
-        icon: DocumentDuplicateIcon
-      },
-      { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon }
-    ]
-  },
-  { name: 'ChatGPT', href: '/chat-gpt', icon: ChatBubbleLeftRightIcon },
-  { name: 'FC Clubs', href: '/fc-clubs', icon: BiFootball },
-  { name: 'Error example', href: '/error-example', icon: ExclamationCircleIcon },
-  { name: 'Not found example', href: '/path-that-does-not-exist', icon: QuestionMarkCircleIcon },
-  { name: 'About', href: '/about', icon: WindowIcon }
-]
+const useLinks = () => {
+  const t = useScopedI18n('nav')
+
+  return [
+    {
+      name: t('home'),
+      href: '/',
+      icon: HomeIcon
+    },
+    {
+      name: t('dashboard'),
+      icon: PresentationChartBarIcon,
+      children: [
+        {
+          name: t('dashboard.main'),
+          href: '/dashboard',
+          icon: ChartBarSquareIcon
+        },
+        {
+          name: t('dashboard.invoices'),
+          href: '/dashboard/invoices',
+          icon: DocumentDuplicateIcon
+        },
+        { name: t('dashboard.customers'), href: '/dashboard/customers', icon: UserGroupIcon }
+      ]
+    },
+    { name: t('chatGPT'), href: '/chat-gpt', icon: ChatBubbleLeftRightIcon },
+    { name: t('fcClubs'), href: '/fc-clubs', icon: BiFootball },
+    { name: t('about'), href: '/about', icon: WindowIcon }
+  ]
+}
 
 export default function AppNav() {
   const pathname = usePathname()
+
+  const links = useLinks()
 
   const [openItems, setOpenItems] = useState(() =>
     links.reduce<Record<string, boolean>>((acc, link) => {
@@ -121,59 +126,6 @@ export default function AppNav() {
           )
         })}
       </ul>
-      {/*
-        <li>
-          <Link href="/" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-            <HomeIcon className="h-5 w-5 mr-3" />
-            <span>Home</span>
-          </Link>
-        </li>
-        <li>
-          <button
-            className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-primary/[0.05]"
-          >
-            <div className="flex items-center">
-              <LayoutDashboardIcon className="h-5 w-5 mr-3" />
-              <span>Dashboard</span>
-            </div>
-            <ChevronDownIcon className="h-4 w-4" /> : <ChevronRightIcon className="h-4 w-4" />
-          </button>
-          <ul className="ml-6 mt-2 space-y-2">
-            <li>
-              <Link href="/dashboard" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-                <span>Main</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard/invoices" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-                <span>Invoices</span>
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard/customers" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-                <span>Customers</span>
-              </Link>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <Link href="/chat-gpt" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-            <MessageSquareIcon className="h-5 w-5 mr-3" />
-            <span>ChatGPT</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/fc-clubs" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-            <ShieldIcon className="h-5 w-5 mr-3" />
-            <span>FC clubs</span>
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" className="flex items-center p-2 rounded-lg hover:bg-primary/[0.05]">
-            <InfoIcon className="h-5 w-5 mr-3" />
-            <span>About</span>
-          </Link>
-        </li>*/}
     </nav>
   )
 }
