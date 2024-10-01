@@ -1,6 +1,12 @@
+import { Metadata } from 'next'
+
 import { fetchCustomers } from '@/api/dashboard/fetchCustomers'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import CreateInvoiceForm from './components/CreateInvoiceForm'
+
+export const metadata: Metadata = {
+  title: 'Create invoice'
+}
 
 export default async function Page() {
   const customers = await fetchCustomers()

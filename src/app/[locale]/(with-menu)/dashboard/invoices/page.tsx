@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { PlusIcon } from '@heroicons/react/24/outline'
+import { Metadata } from 'next'
 
 import Pagination from './components/Pagination'
 import Search from './components/Search'
@@ -8,6 +9,10 @@ import Table from './components/Table'
 import { fetchInvoicesPages } from '@/api/dashboard/fetchInvoicesPages'
 import { lusitana } from '@/constants/fonts'
 import InvoicesTableSkeleton from './components/InvoicesTableSkeleton'
+
+export const metadata: Metadata = {
+  title: 'Dashboard'
+}
 
 export default async function Page({
   searchParams

@@ -8,7 +8,7 @@ type Props = {
 export default function WithMenuLayout({ children }: Props) {
   return (
     <ApplicationLayout>
-      <main>{children}</main>
+      <main className="h-full min-h-full p-12 pt-16">{children}</main>
     </ApplicationLayout>
   )
 }

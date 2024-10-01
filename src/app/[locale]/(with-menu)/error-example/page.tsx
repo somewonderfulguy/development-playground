@@ -11,5 +11,5 @@ export default function ErrorExample() {
     newVariable = undef.map((x: any) => x.variable)
   }, [undef])
 
-  return <div>Content of the page does not matter - it will crash anyway.</div>
+  return <>Content of the page does not matter - it will crash anyway. {newVariable}</>
 }

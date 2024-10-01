@@ -1,4 +1,7 @@
 export default {
+  about: {
+    title: 'About web-site'
+  },
   app: {
     somethingWentWrong: 'Щось пішло не так',
     tryAgain: 'Спробуйте ще раз'
@@ -230,6 +233,9 @@ export default {
         city: 'Борнмут'
       }
     }
+  },
+  home: {
+    title: 'Home page'
   },
   nav: {
     about: 'Про сайт',

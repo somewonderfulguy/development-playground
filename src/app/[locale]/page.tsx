@@ -1,10 +1,13 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import type { Metadata } from 'next'
+import { getScopedI18n } from '@/locales/server'
 
-// import { lusitana } from '@/app/ui/fonts';
-// import AcmeLogo from '@/app/ui/acme-logo';
-// import { ArrowRightIcon } from '@heroicons/react/24/outline';
+export async function generateMetadata() {
+  const t = await getScopedI18n('home')
+  return {
+    title: t('title')
+  } satisfies Metadata
+}
 
 export default function HomePage() {
-  return <div>Hello...</div>
+  return <div className="flex h-full min-h-full items-center justify-center">Hello...</div>
 }

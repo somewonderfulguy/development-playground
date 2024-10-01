@@ -1,4 +1,7 @@
 export default {
+  about: {
+    title: 'About web-site'
+  },
   app: {
     somethingWentWrong: 'Something went wrong',
     tryAgain: 'Try again'
@@ -230,6 +233,9 @@ export default {
         city: 'Bournemouth'
       }
     }
+  },
+  home: {
+    title: 'Home page'
   },
   nav: {
     about: 'About',

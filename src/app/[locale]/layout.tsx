@@ -15,8 +15,8 @@ export default function HomeLayout({ children, params: { locale } }: Props) {
   const { direction: dir } = new Locale(locale).textInfo
 
   return (
-    <html lang={locale} dir={dir}>
-      <body className={`antialiased ${inter.className}`}>
+    <html lang={locale} dir={dir} className="h-full min-h-full">
+      <body className={`h-full min-h-full antialiased ${inter.className}`}>
         <Providers locale={locale}>{children}</Providers>
       </body>
     </html>

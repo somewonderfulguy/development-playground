@@ -1,4 +1,7 @@
 export default {
+  about: {
+    title: 'About web-site'
+  },
   app: {
     somethingWentWrong: '問題が発生しました',
     tryAgain: '再試行する'
@@ -230,6 +233,9 @@ export default {
         city: 'ボーンマス'
       }
     }
+  },
+  home: {
+    title: 'Home page'
   },
   nav: {
     about: '概要',

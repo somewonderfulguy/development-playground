@@ -1,11 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { setStaticParamsLocale } from 'next-international/server'
 
 import { getTeamsByLeague, getTeamsMapping, getVenuesMapping } from '@/features/football/api/teamsApi'
 import { TheSportsDBTeamsResponse } from '@/features/football/types/teamTypes'
-import { setStaticParamsLocale } from 'next-international/server'
 import { getScopedI18n, getStaticParams } from '@/locales/server'
 
+export async function generateMetadata() {
+  const t = await getScopedI18n('football')
+  return {
+    title: t('homeTitle')
+  } satisfies Metadata
+}
+
+// TODO: move outside
 function toCamelCase(str: string) {
   return str
     .trim()
@@ -15,6 +24,7 @@ function toCamelCase(str: string) {
     .join('')
 }
 
+// TODO: move outside
 const handleSportsDBResponse = (response: TheSportsDBTeamsResponse) => {
   return response.teams.map((team) => ({
     id: team.idTeam,
@@ -33,6 +43,7 @@ export function generateStaticParams() {
   return getStaticParams()
 }
 
+// TODO: move outside
 async function getTeams() {
   const sportsDBTeams = await Promise.all([
     getTeamsByLeague('English%20Premier%20League').then(handleSportsDBResponse),
@@ -43,8 +54,6 @@ async function getTeams() {
 
   const teamsT = await getScopedI18n('football.teamNames')
   const venuesT = await getScopedI18n('football.venues')
-
-  // <p>{t('welcome', { name: 'John' })}</p>
 
   return sportsDBTeams
     .map(({ venueId, ...team }) => {

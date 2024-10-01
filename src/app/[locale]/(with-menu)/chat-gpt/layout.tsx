@@ -1,25 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
+import React, { ReactNode } from 'react'
 import { SessionProvider } from 'next-auth/react'
 
 import { signIn, signOut, auth } from '@/auth'
 
 import UserButton from './components/UserButton'
-import React from 'react'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'NextJS ChatGPT App',
-  description: 'ChatGPT brought to you by NextJS'
+  title: 'ChatGPT'
 }
 
-export default async function ChatGPTLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+type Props = {
+  children: ReactNode
+}
+
+export default async function ChatGPTLayout({ children }: Props) {
   const session = await auth()
   if (session?.user) {
     session.user = {

@@ -19,7 +19,7 @@ export default function ErrorBoundaryAppRouter({ error, reset, title }: Props) {
   const t = useScopedI18n('app')
 
   return (
-    <div className="flex min-h-svh items-center justify-center">
+    <div className="flex h-full min-h-full items-center justify-center">
       <div className="max-w-[90%] px-4 py-8 text-center">
         <AlertCircle className="mx-auto h-12 w-12 text-destructive" aria-hidden="true" />
         <h2 className="mt-4 text-2xl font-semibold">{title || t('somethingWentWrong')}</h2>

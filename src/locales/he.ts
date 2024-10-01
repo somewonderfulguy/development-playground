@@ -1,4 +1,7 @@
 export default {
+  about: {
+    title: 'About web-site'
+  },
   app: {
     somethingWentWrong: 'משהו השתבש',
     tryAgain: 'נסה שוב'
@@ -230,6 +233,9 @@ export default {
         city: "בורנמות'"
       }
     }
+  },
+  home: {
+    title: 'Home page'
   },
   nav: {
     about: 'אודות',
