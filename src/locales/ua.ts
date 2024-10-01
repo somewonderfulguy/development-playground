@@ -1,4 +1,8 @@
 export default {
+  app: {
+    somethingWentWrong: 'Щось пішло не так',
+    tryAgain: 'Спробуйте ще раз'
+  },
   football: {
     established: 'засновано {year}',
     homeTitle: "Клуби Прем'єр-ліги та Чемпіонату Футбольної ліги Англії",

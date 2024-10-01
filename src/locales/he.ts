@@ -1,4 +1,8 @@
 export default {
+  app: {
+    somethingWentWrong: 'משהו השתבש',
+    tryAgain: 'נסה שוב'
+  },
   football: {
     established: 'נוסד {year}',
     homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,

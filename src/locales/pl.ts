@@ -1,4 +1,8 @@
 export default {
+  app: {
+    somethingWentWrong: 'Coś poszło nie tak',
+    tryAgain: 'Spróbuj ponownie'
+  },
   football: {
     established: 'zał. {year}',
     homeTitle: 'Kluby Premier League ta EFL Championship',

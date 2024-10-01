@@ -1,8 +1,9 @@
 import type { Config } from 'tailwindcss'
 
 const config = {
-  darkMode: ['class'],
   content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  darkMode: ['class'],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')],
   prefix: '',
   theme: {
     container: {
@@ -13,12 +14,17 @@ const config = {
       }
     },
     extend: {
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        // TODO: remove these colors, add new
         blue: {
           400: '#2589FE',
           500: '#0070F3',
@@ -53,10 +59,8 @@ const config = {
           foreground: 'hsl(var(--card-foreground))'
         }
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+      gridTemplateColumns: {
+        '13': 'repeat(13, minmax(0, 1fr))'
       },
       keyframes: {
         'accordion-down': {
@@ -68,12 +72,8 @@ const config = {
           to: { height: '0' }
         }
       },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
-      },
-      gridTemplateColumns: {
-        '13': 'repeat(13, minmax(0, 1fr))'
+      minHeight: {
+        svh: ['100vh', '100svh'] as unknown as string
       },
       spacing: {
         '18': '4.5rem'
@@ -86,8 +86,7 @@ const config = {
         }
       }
     }
-  },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')]
+  }
 } satisfies Config
 
 export default config

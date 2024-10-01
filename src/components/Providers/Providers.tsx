@@ -2,7 +2,6 @@
 
 import { ReactNode } from 'react'
 
-import { IsErrorProvider } from '@/contexts'
 import { I18nProviderClient } from '@/locales/client'
 
 type Props = {
@@ -11,10 +10,5 @@ type Props = {
 }
 
 export default function Providers({ children, locale }: Props) {
-  return (
-    // TODO: remove IsErrorProvider
-    <IsErrorProvider>
-      <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
-    </IsErrorProvider>
-  )
+  return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
 }

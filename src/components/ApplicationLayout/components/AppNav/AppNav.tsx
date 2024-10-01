@@ -7,7 +7,9 @@ import {
   ChartBarSquareIcon,
   PresentationChartBarIcon,
   HomeIcon,
-  WindowIcon
+  WindowIcon,
+  QuestionMarkCircleIcon,
+  ExclamationCircleIcon
 } from '@heroicons/react/24/outline'
 import { BiFootball } from 'react-icons/bi'
 import Link from 'next/link'
@@ -53,7 +55,19 @@ const useLinks = () => {
       : []),
     ...(isDevelopment ? [{ name: t('chatGPT'), href: '/chat-gpt', icon: ChatBubbleLeftRightIcon }] : []),
     { name: t('fcClubs'), href: '/fc-clubs', icon: BiFootball },
-    { name: t('about'), href: '/about', icon: WindowIcon }
+    { name: t('about'), href: '/about', icon: WindowIcon },
+    ...(isDevelopment
+      ? [
+          {
+            name: 'Development pages',
+            icon: QuestionMarkCircleIcon,
+            children: [
+              { name: 'Error example', href: '/error-example', icon: ExclamationCircleIcon },
+              { name: 'Not found example', href: '/path-that-does-not-exist', icon: QuestionMarkCircleIcon }
+            ]
+          }
+        ]
+      : [])
   ]
 }
 

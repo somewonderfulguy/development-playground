@@ -1,4 +1,8 @@
 export default {
+  app: {
+    somethingWentWrong: '問題が発生しました',
+    tryAgain: '再試行する'
+  },
   football: {
     established: '設立 {year}年',
     homeTitle: 'プレミアリーグとEFLチャンピオンシップのクラブ',

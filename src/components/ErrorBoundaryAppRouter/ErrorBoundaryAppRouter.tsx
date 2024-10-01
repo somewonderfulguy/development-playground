@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { AlertCircle, ChevronDown } from 'lucide-react'
-import { useIsErrorDispatch } from '@/contexts'
+import { useScopedI18n } from '@/locales/client'
 
 type Props = {
   error: Error & { digest?: string }
@@ -13,24 +13,20 @@ type Props = {
   description?: string
 }
 
-export default function ErrorBoundaryAppRouter({ error, reset, title = 'Something went wrong' }: Props) {
+export default function ErrorBoundaryAppRouter({ error, reset, title }: Props) {
   const [isOpen, setIsOpen] = useState(false)
-  const setIsError = useIsErrorDispatch()
 
-  useEffect(() => {
-    setIsError({ isError: true })
-    return () => setIsError({ isError: false })
-  }, [setIsError])
+  const t = useScopedI18n('app')
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="w-full max-w-lg bg-card px-4 py-8 text-center">
-        <AlertCircle className="mx-auto h-12 w-12 text-destructive text-red-500" aria-hidden="true" />
-        <h2 className="mt-4 text-2xl font-semibold text-foreground">{title}</h2>
+    <div className="flex min-h-svh items-center justify-center">
+      <div className="max-w-[90%] px-4 py-8 text-center">
+        <AlertCircle className="mx-auto h-12 w-12 text-destructive" aria-hidden="true" />
+        <h2 className="mt-4 text-2xl font-semibold">{title || t('somethingWentWrong')}</h2>
         <p className="mt-2 text-muted-foreground">{error.message}</p>
         <div className="mt-6">
           <Button onClick={reset} variant="default">
-            Try again
+            {t('tryAgain')}
           </Button>
         </div>
         {process.env.NODE_ENV === 'development' && (
