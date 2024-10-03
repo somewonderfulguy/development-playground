@@ -1,21 +1,18 @@
-import NextAuth from 'next-auth'
-// @ts-ignore
-import type { NextAuthOptions } from 'next-auth'
-import GitHUbProvider from 'next-auth/providers/github'
+import NextAuth, { type NextAuthConfig } from 'next-auth'
+import GitHubProvider from 'next-auth/providers/github'
 
-const authOptions: NextAuthOptions = {
+const authOptions: NextAuthConfig = {
   callbacks: {
-    signIn: async ({ profile }: { profile: { login: string } }) => {
-      return profile.login === 'somewonderfulguy'
+    async signIn({ profile }) {
+      return profile?.login === 'somewonderfulguy'
     }
-  } as unknown as NextAuthOptions['callbacks'],
+  },
   providers: [
-    GitHUbProvider({
+    GitHubProvider({
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? ''
     })
-  ] as NextAuthOptions['providers'],
-
+  ],
   secret: process.env.SECRET
 }
 

@@ -9,6 +9,6 @@ type Props = {
   locale: string
 }
 
-export default function Providers({ children, locale }: Props) {
+export default function ClientProviders({ children, locale }: Props) {
   return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
 }

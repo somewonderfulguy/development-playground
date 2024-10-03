@@ -1,6 +1,12 @@
-import Chat from './components/Chat'
+import { Metadata } from 'next'
 import { Separator } from '@radix-ui/react-dropdown-menu'
+
+import Chat from './components/Chat'
 import { auth } from '@/auth'
+
+export const metadata: Metadata = {
+  title: 'ChatGPT'
+}
 
 export default async function GhatGPTPage() {
   const session = await auth()
