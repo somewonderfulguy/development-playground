@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, ReactNode } from 'react'
-import { MenuIcon, MoonIcon, SunIcon, UserIcon, XIcon } from 'lucide-react'
+import { MenuIcon, MoonIcon, SunIcon, XIcon } from 'lucide-react'
 
 import { TooltipGroup, TooltipProvider } from '@/components/ui/tooltip'
 import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
@@ -9,7 +9,6 @@ import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
 import AppNav from './components/AppNav'
 import AppControlButton from './components/AppControlButton'
 import AppControlSelect from './components/AppControlSelect'
-import { useSession } from 'next-auth/react'
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -22,12 +21,11 @@ const languages = [
 const iconSharedClassName = 'h-4 w-4' as const
 
 type Props = {
-  onSignIn: () => Promise<void>
-  onSignOut: () => Promise<void>
   children: ReactNode
+  userButton: ReactNode
 }
 
-export default function ApplicationLayout({ children, onSignIn }: Props) {
+export default function ApplicationLayout({ children, userButton }: Props) {
   const isRtl = useIsRtl()
 
   const changeLocale = useChangeLocale()
@@ -35,10 +33,6 @@ export default function ApplicationLayout({ children, onSignIn }: Props) {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(true)
   const [isDarkTheme, setIsDarkTheme] = useState(false)
-
-  const { data: session, status } = useSession()
-
-  console.log(session, status)
 
   return (
     <TooltipProvider>
@@ -50,13 +44,11 @@ export default function ApplicationLayout({ children, onSignIn }: Props) {
               {isDrawerOpen ? <XIcon className={iconSharedClassName} /> : <MenuIcon className={iconSharedClassName} />}
             </AppControlButton>
           </TooltipGroup>
-
           <TooltipGroup tooltipContent={<p>Switch theme</p>}>
             <AppControlButton onClick={() => setIsDarkTheme((prev) => !prev)}>
               {isDarkTheme ? <SunIcon className={iconSharedClassName} /> : <MoonIcon className={iconSharedClassName} />}
             </AppControlButton>
           </TooltipGroup>
-
           <AppControlSelect
             value={currentLocale}
             onValueChange={changeLocale}
@@ -67,17 +59,7 @@ export default function ApplicationLayout({ children, onSignIn }: Props) {
             }
             options={languages.map((lang) => ({ value: lang.code, label: lang.label }))}
           />
-
-          <TooltipGroup tooltipContent={<p>Log in</p>}>
-            <AppControlButton
-              onClick={() => {
-                // console.log('kek')
-                onSignIn()
-              }}
-            >
-              <UserIcon className={iconSharedClassName} />
-            </AppControlButton>
-          </TooltipGroup>
+          {userButton}
         </div>
 
         <div className="flex h-full">
