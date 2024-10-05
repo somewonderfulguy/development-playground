@@ -53,7 +53,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             value={currentLocale}
             onValueChange={changeLocale}
             trigger={
-              <TooltipGroup tooltipContent={<></>}>
+              <TooltipGroup tooltipContent={<>Hey-hey!</>}>
                 <AppControlSelect.Trigger>{currentLocale.toUpperCase()}</AppControlSelect.Trigger>
               </TooltipGroup>
             }
