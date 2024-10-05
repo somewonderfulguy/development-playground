@@ -10,7 +10,7 @@ type Props = {
 export default async function WithMenuLayout({ children }: Props) {
   return (
     <ApplicationLayout userButton={<UserButton />}>
-      <main className="h-full min-h-full p-12 pt-16">{children}</main>
+      <main className="h-full min-h-full bg-background p-12 pt-16 text-primary">{children}</main>
     </ApplicationLayout>
   )
 }

@@ -26,12 +26,12 @@ export default async function HomeLayout({ children, params: { locale } }: Props
   }
 
   return (
-    <SessionProvider basePath="/api/auth" session={session}>
-      <ClientProviders locale={locale}>
-        <html lang={locale} dir={dir} className="h-full min-h-full">
-          <body className={`h-full min-h-full antialiased ${inter.className}`}>{children}</body>
-        </html>
-      </ClientProviders>
-    </SessionProvider>
+    <html lang={locale} dir={dir} className="h-full min-h-full">
+      <body className={`h-full min-h-full antialiased ${inter.className}`}>
+        <SessionProvider basePath="/api/auth" session={session}>
+          <ClientProviders locale={locale}>{children}</ClientProviders>
+        </SessionProvider>
+      </body>
+    </html>
   )
 }

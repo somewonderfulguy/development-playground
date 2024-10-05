@@ -106,14 +106,14 @@ export default function AppNav() {
                 <Link
                   href={link.href}
                   className={`${
-                    pathname === withLocale(link.href) && 'bg-primary/[0.05] text-primary'
-                  } flex items-center gap-2 rounded-lg p-2 text-sm hover:bg-primary/[0.05]`}
+                    pathname === withLocale(link.href) && 'bg-primary/[0.05]'
+                  } flex items-center gap-2 rounded-lg p-2 text-sm text-primary hover:bg-primary/[0.05]`}
                 >
                   {item}
                 </Link>
               ) : (
                 <button
-                  className={`flex w-full items-center justify-start gap-2 rounded-lg p-2 text-sm ${childrenHrefs.includes(pathname) ? 'font-semibold' : 'font-medium'} hover:bg-primary/[0.05]`}
+                  className={`flex w-full items-center justify-start gap-2 rounded-lg p-2 text-sm text-primary ${childrenHrefs.includes(pathname) ? 'font-semibold' : 'font-medium'} hover:bg-primary/[0.05]`}
                   onClick={() => setOpenItems((prev) => ({ ...prev, [link.name]: !prev[link.name] }))}
                 >
                   {item}
@@ -127,7 +127,7 @@ export default function AppNav() {
                     <Link
                       key={child.href}
                       href={child.href}
-                      className={`flex h-[36px] items-center gap-2 rounded-md ${isActive && 'bg-primary/[0.05]'} px-1 py-[6px] ${isRtl ? 'pr-[1.2rem]' : 'pl-[1.2rem]'} text-sm font-medium hover:bg-primary/[0.05]`}
+                      className={`flex h-[36px] items-center gap-2 rounded-md text-primary ${isActive && 'bg-primary/[0.05]'} px-1 py-[6px] ${isRtl ? 'pr-[1.2rem]' : 'pl-[1.2rem]'} text-sm font-medium hover:bg-primary/[0.05]`}
                     >
                       <ChildIcon className="w-6" />
                       <p className="hidden md:block">{child.name}</p>

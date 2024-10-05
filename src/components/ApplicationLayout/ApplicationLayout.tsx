@@ -73,7 +73,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
           </div>
           {/* Main Content */}
           <div
-            className={`flex-grow overflow-y-auto transition-all duration-300 ease-in-out ${isDrawerOpen ? (isRtl ? 'mr-[270px]' : 'ml-[270px]') : 'ml-0'} `}
+            className={`flex-grow overflow-y-auto transition-[margin] duration-300 ease-in-out ${isDrawerOpen ? (isRtl ? 'mr-[270px]' : 'ml-[270px]') : 'ml-0'} `}
           >
             {children}
           </div>
