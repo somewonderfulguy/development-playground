@@ -1,5 +1,5 @@
-import { ElementRef, forwardRef, ReactNode } from 'react'
-import { Root, SelectTriggerProps, SelectProps } from '@radix-ui/react-select'
+import { forwardRef, ReactNode } from 'react'
+import { SelectTriggerProps, SelectProps } from '@radix-ui/react-select'
 
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from '@/components/ui/select'
 
@@ -23,9 +23,10 @@ const AppControlSelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps
     )
   }
 )
+AppControlSelectTrigger.displayName = 'AppControlSelectTrigger'
 
-const AppControlSelect = Object.assign(
-  forwardRef<HTMLDivElement, AppControlSelectProps>(({ trigger, options, ...props }, ref) => {
+const AppControlSelectComponent = forwardRef<HTMLDivElement, AppControlSelectProps>(
+  ({ trigger, options, ...props }, ref) => {
     return (
       <Select {...props}>
         {trigger}
@@ -44,8 +45,10 @@ const AppControlSelect = Object.assign(
         </SelectContent>
       </Select>
     )
-  }),
-  { Trigger: AppControlSelectTrigger }
+  }
 )
+AppControlSelectComponent.displayName = 'AppControlSelect'
+
+const AppControlSelect = Object.assign(AppControlSelectComponent, { Trigger: AppControlSelectTrigger })
 
 export default AppControlSelect
