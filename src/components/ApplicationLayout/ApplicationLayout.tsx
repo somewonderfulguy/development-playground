@@ -53,7 +53,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             value={currentLocale}
             onValueChange={changeLocale}
             trigger={
-              <TooltipGroup tooltipContent={<>Hey-hey!</>}>
+              <TooltipGroup tooltipContent={<p>Change language</p>}>
                 <AppControlSelect.Trigger>{currentLocale.toUpperCase()}</AppControlSelect.Trigger>
               </TooltipGroup>
             }
@@ -71,6 +71,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
           >
             <AppNav />
           </div>
+
           {/* Main Content */}
           <div
             className={`flex-grow overflow-y-auto transition-[margin] duration-300 ease-in-out ${isDrawerOpen ? (isRtl ? 'mr-[270px]' : 'ml-[270px]') : 'ml-0'} `}

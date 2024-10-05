@@ -16,7 +16,7 @@ const AppControlSelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps
       <SelectTrigger
         {...props}
         ref={ref}
-        className={`flex h-10 w-10 items-center justify-center p-0 hover:bg-secondary-foreground/[0.05] hover:text-accent-foreground ${styles.buttonDropDown} ${className}`}
+        className={`flex h-10 w-10 items-center justify-center p-0 text-primary transition-colors hover:bg-secondary-foreground/[0.05] hover:text-accent-foreground ${styles.buttonDropDown} ${className}`}
       >
         <SelectValue>{children}</SelectValue>
       </SelectTrigger>
