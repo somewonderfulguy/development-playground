@@ -25,7 +25,7 @@
     "intl-locale-textinfo-polyfill": "^2.1.1",
     "lucide-react": "^0.429.0",
     "next": "14.2.5",
-    "next-auth": "5.0.0-beta.22",
+    "next-auth": "4.24.8",
     "next-international": "^1.2.4",
     "openai": "^4.56.1",
     "react": "^18",

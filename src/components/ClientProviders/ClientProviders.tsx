@@ -1,6 +1,7 @@
 'use-client'
 
 import { ReactNode } from 'react'
+import { SessionProvider } from './SessionProvider'
 
 import { I18nProviderClient } from '@/locales/client'
 
@@ -10,5 +11,9 @@ type Props = {
 }
 
 export default function ClientProviders({ children, locale }: Props) {
-  return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+  return (
+    <SessionProvider>
+      <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+    </SessionProvider>
+  )
 }
