@@ -1,5 +1,7 @@
 'use client'
 
+// TODO: review & refactor (AI/Shadcn generated)
+
 import * as React from 'react'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 
