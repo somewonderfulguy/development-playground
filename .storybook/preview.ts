@@ -23,9 +23,7 @@ const preview: Preview = {
         icon: 'sun',
         items: [
           { value: 'light', icon: 'sun', title: 'Light' },
-          { value: 'dark', icon: 'moon', title: 'Dark' },
-          { value: 'sideBySide', icon: 'sidebyside', title: 'Side by side' },
-          { value: 'oneAfterAnother', icon: 'stacked', title: 'One after another' }
+          { value: 'dark', icon: 'moon', title: 'Dark' }
         ]
       }
     }

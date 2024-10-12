@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, ReactNode } from 'react'
-import { MenuIcon, MoonIcon, SunIcon, XIcon } from 'lucide-react'
+import { LuSun as SunIcon, LuMoon as MoonIcon, LuX as XIcon, LuMenu as MenuIcon } from 'react-icons/lu'
 
 import { TooltipGroup, TooltipProvider } from '@/components/ui/tooltip'
 import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
@@ -36,9 +36,9 @@ export default function ApplicationLayout({ children, userButton }: Props) {
 
   return (
     <TooltipProvider>
-      <div className={`relative h-screen w-full overflow-hidden ${isDarkTheme ? 'dark' : ''}`}>
+      <div className={`relative overflow-hidden ${isDarkTheme ? 'dark' : ''}`}>
         {/* Top controls */}
-        <div className={`absolute top-4 ${isRtl ? 'right-4' : 'left-4'} z-20 flex gap-1`}>
+        <div className={`fixed top-4 ${isRtl ? 'right-4' : 'left-4'} z-20 flex gap-1`}>
           <TooltipGroup tooltipContent={<p>Toggle sidebar</p>}>
             <AppControlButton onClick={() => setIsDrawerOpen((prev) => !prev)}>
               {isDrawerOpen ? <XIcon className={iconSharedClassName} /> : <MenuIcon className={iconSharedClassName} />}
