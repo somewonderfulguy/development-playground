@@ -4,14 +4,20 @@ import { LuSun as SunIcon } from 'react-icons/lu'
 import AppControlPopover from './AppControlPopover'
 import AppControlButton from '../AppControlButton'
 
+/**
+ * Menu component that utilizes Radix UI Popover. https://www.radix-ui.com/primitives/docs/components/popover. <br />
+ * Internally, implements show/hide logic on hover.
+ */
 const meta: Meta = {
   title: 'Application Layout/App Popover',
-  component: AppControlPopover
+  component: AppControlPopover,
+  tags: ['autodocs']
 }
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+/** Minimal example. As simple as it gets. */
 export const MinimalExample: Story = {
   args: {
     children: (
@@ -23,8 +29,10 @@ export const MinimalExample: Story = {
   }
 }
 
-export const ThemeSwitcher: Story = {
+/** Full example */
+export const FullExample: Story = {
   args: {
+    open: true,
     children: (
       <>
         <AppControlPopover.Trigger asChild>
