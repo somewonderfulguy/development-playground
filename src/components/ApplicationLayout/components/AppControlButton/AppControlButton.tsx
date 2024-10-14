@@ -10,7 +10,10 @@ export default forwardRef<HTMLButtonElement, ButtonProps>(function AppControlBut
       {...props}
       ref={ref}
       // TODO: do better coloring on hover
-      className={clsx('text-primary hover:bg-secondary-foreground/[0.05]', props.className)}
+      className={clsx(
+        'focus-visible:box-shadow-none text-primary hover:bg-secondary-foreground/[0.05] focus:bg-secondary-foreground/[0.05]',
+        props.className
+      )}
     />
   )
 })

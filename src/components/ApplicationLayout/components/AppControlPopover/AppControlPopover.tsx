@@ -155,4 +155,5 @@ Content.displayName = Popover.Content.displayName
 
 const AppControlPopover = Object.assign(Root, { Trigger, Content })
 
+export { useAppControlPopoverDispatch }
 export default AppControlPopover
