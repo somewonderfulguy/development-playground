@@ -3,6 +3,7 @@ import { LuSun as SunIcon } from 'react-icons/lu'
 
 import AppControlPopover from './AppControlPopover'
 import AppControlButton from '../AppControlButton'
+import AppControlList from '../AppControlList'
 
 /**
  * Menu component that utilizes Radix UI Popover. https://www.radix-ui.com/primitives/docs/components/popover. <br />
@@ -41,14 +42,23 @@ export const FullExample: Story = {
           </AppControlButton>
         </AppControlPopover.Trigger>
         <AppControlPopover.Content>
-          <div className="flex flex-col gap-2">
-            <button className="btn" onClick={() => alert('Light')}>
-              Light
-            </button>
-            <button className="btn" onClick={() => alert('Dark')}>
-              Dark
-            </button>
-          </div>
+          <AppControlList>
+            <AppControlList.Item>
+              <button className="btn" onClick={() => alert('Light')}>
+                Light
+              </button>
+            </AppControlList.Item>
+            <AppControlList.Item>
+              <button className="btn" onClick={() => alert('Dark')}>
+                Dark
+              </button>
+            </AppControlList.Item>
+            <AppControlList.Item>
+              <button className="btn" onClick={() => alert('System')}>
+                System
+              </button>
+            </AppControlList.Item>
+          </AppControlList>
         </AppControlPopover.Content>
       </>
     )
