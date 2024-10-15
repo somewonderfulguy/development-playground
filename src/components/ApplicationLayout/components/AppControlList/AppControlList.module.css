@@ -9,9 +9,9 @@
 }
 
 .listItem {
-  & > *:hover,
-  & > *:focus,
-  & > *:focus-visible {
+  &:hover,
+  &:focus,
+  &:focus-visible {
     outline: none;
     background-color: hsl(var(--secondary));
   }

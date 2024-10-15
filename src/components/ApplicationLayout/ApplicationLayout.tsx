@@ -73,27 +73,17 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             <AppControlPopover.Content>
               <AppControlList>
                 <AppControlList.Item isActive={!isDarkTheme}>
-                  <button
-                    className="btn"
-                    onClick={() => setIsDarkTheme(false)}
-                    role="option"
-                    aria-selected={isDarkTheme ? 'false' : 'true'}
-                  >
+                  <button className="btn" onClick={() => setIsDarkTheme(false)}>
                     Light
                   </button>
                 </AppControlList.Item>
                 <AppControlList.Item isActive={isDarkTheme}>
-                  <button
-                    className="btn"
-                    onClick={() => setIsDarkTheme(true)}
-                    role="option"
-                    aria-selected={isDarkTheme ? 'true' : 'false'}
-                  >
+                  <button className="btn" onClick={() => setIsDarkTheme(true)}>
                     Dark
                   </button>
                 </AppControlList.Item>
                 <AppControlList.Item>
-                  <button className="btn" onClick={() => {}} role="option" aria-selected="false">
+                  <button className="btn" onClick={() => {}}>
                     System
                   </button>
                 </AppControlList.Item>

@@ -56,13 +56,11 @@ const RootImpl = (props: RootProps) => {
     />
   )
 }
-const Root = (props: RootProps) => {
-  return (
-    <AppControlPopoverStoreProvider>
-      <RootImpl {...props} />
-    </AppControlPopoverStoreProvider>
-  )
-}
+const Root = (props: RootProps) => (
+  <AppControlPopoverStoreProvider>
+    <RootImpl {...props} />
+  </AppControlPopoverStoreProvider>
+)
 
 type TriggerProps = ComponentPropsWithoutRef<typeof Popover.Trigger>
 const Trigger = forwardRef<ElementRef<typeof Popover.Trigger>, TriggerProps>(
@@ -102,8 +100,6 @@ const Content = forwardRef<ElementRef<typeof Popover.Content>, ContentProps>(
     const triggerId = useAppControlPopoverStore((state) => state.triggerId)
     const updateStore = useAppControlPopoverDispatch()
 
-    // TODO: add keyboard navigation
-
     const popoverRef = useRef<HTMLDivElement>()
 
     /** Focus on aria-selected="true" element if exists, otherwise focus on the first element (also, if exists) */
@@ -142,7 +138,6 @@ const Content = forwardRef<ElementRef<typeof Popover.Content>, ContentProps>(
             className
           )}
           tabIndex={-1}
-          role="menu"
           aria-labelledby={triggerId}
           onOpenAutoFocus={onOpenAutoFocus}
           {...props}
