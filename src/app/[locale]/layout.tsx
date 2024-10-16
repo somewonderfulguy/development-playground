@@ -15,7 +15,7 @@ export default async function HomeLayout({ children, params: { locale } }: Props
   const { direction: dir } = new Locale(locale).textInfo
 
   return (
-    <html lang={locale} dir={dir} className="h-full min-h-full">
+    <html lang={locale} dir={dir} className="h-full min-h-full" suppressHydrationWarning>
       <body className={`h-full min-h-full antialiased ${inter.className}`}>
         <ClientProviders locale={locale}>{children}</ClientProviders>
       </body>

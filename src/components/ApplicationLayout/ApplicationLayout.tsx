@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, ReactNode, useEffect } from 'react'
-import { LuSun as SunIcon, LuMoon as MoonIcon, LuX as XIcon, LuMenu as MenuIcon } from 'react-icons/lu'
+import { useState, ReactNode } from 'react'
+import { LuX as XIcon, LuMenu as MenuIcon } from 'react-icons/lu'
 
 import { TooltipGroup, TooltipProvider } from '@/components/ui/tooltip'
 import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
@@ -9,8 +9,7 @@ import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
 import AppNav from './components/AppNav'
 import AppControlButton from './components/AppControlButton'
 import AppControlSelect from './components/AppControlSelect'
-import AppControlPopover from './components/AppControlPopover'
-import AppControlList from './components/AppControlList'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -35,15 +34,6 @@ export default function ApplicationLayout({ children, userButton }: Props) {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(true)
 
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  useEffect(() => {
-    if (isDarkTheme) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [isDarkTheme])
-
   return (
     <TooltipProvider>
       <div className="relative overflow-hidden">
@@ -55,41 +45,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             </AppControlButton>
           </TooltipGroup>
 
-          {/* <TooltipGroup tooltipContent={<p>Switch theme</p>}>
-            <AppControlButton onClick={() => setIsDarkTheme((prev) => !prev)}>
-              {isDarkTheme ? <SunIcon className={iconSharedClassName} /> : <MoonIcon className={iconSharedClassName} />}
-            </AppControlButton>
-          </TooltipGroup> */}
-          <AppControlPopover>
-            <AppControlPopover.Trigger asChild>
-              <AppControlButton>
-                {isDarkTheme ? (
-                  <SunIcon className={iconSharedClassName} />
-                ) : (
-                  <MoonIcon className={iconSharedClassName} />
-                )}
-              </AppControlButton>
-            </AppControlPopover.Trigger>
-            <AppControlPopover.Content>
-              <AppControlList>
-                <AppControlList.Item isActive={!isDarkTheme}>
-                  <button className="btn" onClick={() => setIsDarkTheme(false)}>
-                    Light
-                  </button>
-                </AppControlList.Item>
-                <AppControlList.Item isActive={isDarkTheme}>
-                  <button className="btn" onClick={() => setIsDarkTheme(true)}>
-                    Dark
-                  </button>
-                </AppControlList.Item>
-                <AppControlList.Item>
-                  <button className="btn" onClick={() => {}}>
-                    System
-                  </button>
-                </AppControlList.Item>
-              </AppControlList>
-            </AppControlPopover.Content>
-          </AppControlPopover>
+          <ThemeSwitcher />
 
           <AppControlSelect
             value={currentLocale}

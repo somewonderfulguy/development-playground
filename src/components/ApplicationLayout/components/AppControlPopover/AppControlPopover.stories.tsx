@@ -33,7 +33,6 @@ export const MinimalExample: Story = {
 /** Full example */
 export const FullExample: Story = {
   args: {
-    open: true,
     children: (
       <>
         <AppControlPopover.Trigger asChild>

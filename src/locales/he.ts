@@ -6,6 +6,13 @@ export default {
     somethingWentWrong: 'משהו השתבש',
     tryAgain: 'נסה שוב'
   },
+  appControls: {
+    theme: {
+      light: 'בהיר',
+      dark: 'כהה',
+      system: 'מערכת'
+    }
+  },
   football: {
     established: 'נוסד {year}',
     homeTitle: `מועדוני הפרמייר ליג והצ'מפיונשיפ`,

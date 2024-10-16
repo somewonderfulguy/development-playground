@@ -6,6 +6,13 @@ export default {
     somethingWentWrong: 'Something went wrong',
     tryAgain: 'Try again'
   },
+  appControls: {
+    theme: {
+      light: 'Light',
+      dark: 'Dark',
+      system: 'System'
+    }
+  },
   football: {
     established: 'est. {year}',
     homeTitle: 'Premier League & EFL Championship Clubs',

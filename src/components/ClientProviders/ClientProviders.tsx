@@ -1,19 +1,23 @@
 'use-client'
 
 import { ReactNode } from 'react'
-import { SessionProvider } from './SessionProvider'
+import { ThemeProvider } from 'next-themes'
 
 import { I18nProviderClient } from '@/locales/client'
+
+import { SessionProvider } from './SessionProvider'
 
 type Props = {
   children: ReactNode
   locale: string
 }
 
-export default function ClientProviders({ children, locale }: Props) {
-  return (
-    <SessionProvider>
-      <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
-    </SessionProvider>
-  )
-}
+const ClientProviders = ({ children, locale }: Props) => (
+  <SessionProvider>
+    <I18nProviderClient locale={locale}>
+      <ThemeProvider attribute="class">{children}</ThemeProvider>
+    </I18nProviderClient>
+  </SessionProvider>
+)
+
+export default ClientProviders

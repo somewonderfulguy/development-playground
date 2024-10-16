@@ -8,14 +8,15 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "no-console": [
-      "warn",
-      {
-        "allow": ["warn", "error"]
-      }
-    ],
-    "no-unused-vars": "off",
+    // Best Practices
+    "react/button-has-type": "warn",
+
+    // TypeScript
     "@typescript-eslint/no-unused-vars": "warn",
+
+    // Mixed
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-unused-vars": "off",
     "no-extra-semi": "off"
   }
 }

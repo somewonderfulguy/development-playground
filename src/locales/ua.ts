@@ -6,6 +6,13 @@ export default {
     somethingWentWrong: 'Щось пішло не так',
     tryAgain: 'Спробуйте ще раз'
   },
+  appControls: {
+    theme: {
+      light: 'Світла',
+      dark: 'Темна',
+      system: 'Система'
+    }
+  },
   football: {
     established: 'засновано {year}',
     homeTitle: "Клуби Прем'єр-ліги та Чемпіонату Футбольної ліги Англії",

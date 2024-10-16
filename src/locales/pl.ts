@@ -6,6 +6,13 @@ export default {
     somethingWentWrong: 'Coś poszło nie tak',
     tryAgain: 'Spróbuj ponownie'
   },
+  appControls: {
+    theme: {
+      light: 'Jasny',
+      dark: 'Ciemny',
+      system: 'System'
+    }
+  },
   football: {
     established: 'zał. {year}',
     homeTitle: 'Kluby Premier League ta EFL Championship',
