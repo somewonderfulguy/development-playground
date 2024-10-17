@@ -6,6 +6,7 @@ import { useScopedI18n } from '@/locales/client'
 import AppControlPopover from '../AppControlPopover'
 import AppControlButton from '../AppControlButton'
 import AppControlList from '../AppControlList'
+import { useIsMounted } from '@/hooks/useIsMounted'
 
 const ThemeSwitcher = () => {
   const { theme, setTheme, resolvedTheme } = useTheme()
@@ -14,11 +15,13 @@ const ThemeSwitcher = () => {
 
   const buttonClassName = 'btn flex items-center gap-2'
 
+  const isMounted = useIsMounted()
+
   return (
     <AppControlPopover>
       <AppControlPopover.Trigger asChild>
         <AppControlButton>
-          {resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
+          {isMounted && resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
         </AppControlButton>
       </AppControlPopover.Trigger>
       <AppControlPopover.Content>
