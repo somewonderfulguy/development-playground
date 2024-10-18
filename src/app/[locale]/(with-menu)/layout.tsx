@@ -1,16 +1,21 @@
 import { ReactNode } from 'react'
 
 import ApplicationLayout from '@/components/ApplicationLayout'
-import UserButton from '@/components/ApplicationLayout/components/UserButton'
+import ThemeSwitcher from '@/components/ApplicationLayout/components/ThemeSwitcher'
+import { getThemeCookie } from '@/features/theme/utils/getThemeCookie'
 
 type Props = {
   children: ReactNode
 }
 
-export default async function WithMenuLayout({ children }: Props) {
+const WithMenuLayout = ({ children }: Props) => {
+  const cookieTheme = getThemeCookie()
+
   return (
-    <ApplicationLayout userButton={<UserButton />}>
+    <ApplicationLayout themeSwitcher={<ThemeSwitcher cookieTheme={cookieTheme} />}>
       <main className="h-full min-h-full bg-background p-12 pt-16 text-primary">{children}</main>
     </ApplicationLayout>
   )
 }
+
+export default WithMenuLayout

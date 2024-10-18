@@ -9,7 +9,7 @@ import { useChangeLocale, useCurrentLocale, useIsRtl } from '@/locales/client'
 import AppNav from './components/AppNav'
 import AppControlButton from './components/AppControlButton'
 import AppControlSelect from './components/AppControlSelect'
-import ThemeSwitcher from './components/ThemeSwitcher'
+import UserButton from './components/UserButton'
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -23,10 +23,10 @@ const iconSharedClassName = 'h-4 w-4' as const
 
 type Props = {
   children: ReactNode
-  userButton: ReactNode
+  themeSwitcher: ReactNode
 }
 
-export default function ApplicationLayout({ children, userButton }: Props) {
+export default function ApplicationLayout({ children, themeSwitcher }: Props) {
   const isRtl = useIsRtl()
 
   const changeLocale = useChangeLocale()
@@ -45,7 +45,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             </AppControlButton>
           </TooltipGroup>
 
-          <ThemeSwitcher />
+          {themeSwitcher}
 
           <AppControlSelect
             value={currentLocale}
@@ -57,7 +57,7 @@ export default function ApplicationLayout({ children, userButton }: Props) {
             }
             options={languages.map((lang) => ({ value: lang.code, label: lang.label }))}
           />
-          {userButton}
+          <UserButton />
         </div>
 
         <div className="flex h-full">
