@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Locale from 'intl-locale-textinfo-polyfill'
 
 import { inter } from '@/constants/fonts'
-import ClientProviders from '@/components/ClientProviders'
+import ClientProviders from '@/components/GlobalClientProviders'
 
 import './global.css'
 

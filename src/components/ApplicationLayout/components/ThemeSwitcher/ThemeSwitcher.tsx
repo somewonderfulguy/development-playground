@@ -1,5 +1,4 @@
 import { LuSun as SunIcon, LuMoon as MoonIcon, LuMonitorSmartphone as MonitorSmartPhoneIcon } from 'react-icons/lu'
-import { useTheme } from 'next-themes'
 
 import { useScopedI18n } from '@/locales/client'
 
@@ -7,6 +6,7 @@ import AppControlPopover from '../AppControlPopover'
 import AppControlButton from '../AppControlButton'
 import AppControlList from '../AppControlList'
 import { useIsMounted } from '@/hooks/useIsMounted'
+import { useTheme } from '@/features/theme/hooks/useTheme'
 
 const ThemeSwitcher = () => {
   const { theme, setTheme, resolvedTheme } = useTheme()
