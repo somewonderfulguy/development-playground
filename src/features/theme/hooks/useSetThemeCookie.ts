@@ -1,10 +1,9 @@
 import { useEffect } from 'react'
 
-import { setCookie } from '@/utils/setCookie'
-
 import { useTheme } from './useTheme'
 import { CookieKey } from '../constants/cookieKey'
 import type { ResolvedTheme } from '../types/themeTypes'
+import { setCookie } from '../utils/setCookie'
 
 /**
  * Set theme to cookies to avoid flashing in server-side rendering

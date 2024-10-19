@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
 import ApplicationLayout from '@/components/ApplicationLayout'
-import ThemeSwitcher from '@/components/ApplicationLayout/components/ThemeSwitcher'
 import { getThemeCookie } from '@/features/theme/utils/getThemeCookie'
+import ThemeSwitcher from '@/components/ApplicationLayout/components/ThemeSwitcher'
 
 type Props = {
   children: ReactNode
