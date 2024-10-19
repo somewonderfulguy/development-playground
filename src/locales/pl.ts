@@ -10,7 +10,7 @@ export default {
     theme: {
       light: 'Jasny',
       dark: 'Ciemny',
-      system: 'System'
+      system: 'Systemny'
     }
   },
   football: {
