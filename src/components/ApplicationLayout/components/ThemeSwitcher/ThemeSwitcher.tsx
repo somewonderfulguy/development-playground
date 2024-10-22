@@ -1,19 +1,22 @@
+'use client'
+
 import { LuSun as SunIcon, LuMoon as MoonIcon, LuMonitorSmartphone as MonitorSmartPhoneIcon } from 'react-icons/lu'
 
 import { useScopedI18n } from '@/locales/client'
+import { useTheme } from '@/features/theme/hooks/useTheme'
+import { useIsMounted } from '@/hooks/useIsMounted'
 
 import AppControlPopover from '../AppControlPopover'
 import AppControlButton from '../AppControlButton'
 import AppControlList from '../AppControlList'
-import { useIsMounted } from '@/hooks/useIsMounted'
-import { useTheme } from '@/features/theme/hooks/useTheme'
+
+const buttonClassName = 'btn flex items-center gap-2'
+const iconClassName = 'h-4 w-4'
 
 const ThemeSwitcher = () => {
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   const t = useScopedI18n('appControls.theme')
-
-  const buttonClassName = 'btn flex items-center gap-2'
 
   const isMounted = useIsMounted()
 
@@ -21,24 +24,30 @@ const ThemeSwitcher = () => {
     <AppControlPopover>
       <AppControlPopover.Trigger asChild>
         <AppControlButton>
-          {isMounted && resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
+          {!isMounted ? (
+            ''
+          ) : resolvedTheme === 'dark' ? (
+            <MoonIcon className={iconClassName} />
+          ) : (
+            <SunIcon className={iconClassName} />
+          )}
         </AppControlButton>
       </AppControlPopover.Trigger>
       <AppControlPopover.Content>
         <AppControlList>
           <AppControlList.Item isActive={theme === 'light'}>
             <button type="button" className={buttonClassName} onClick={() => setTheme('light')}>
-              <SunIcon className="h-4 w-4" /> {t('light')}
+              <SunIcon className={iconClassName} /> {t('light')}
             </button>
           </AppControlList.Item>
           <AppControlList.Item isActive={theme === 'dark'}>
             <button type="button" className={buttonClassName} onClick={() => setTheme('dark')}>
-              <MoonIcon className="h-4 w-4" /> {t('dark')}
+              <MoonIcon className={iconClassName} /> {t('dark')}
             </button>
           </AppControlList.Item>
           <AppControlList.Item isActive={theme === 'system'}>
             <button type="button" className={buttonClassName} onClick={() => setTheme('system')}>
-              <MonitorSmartPhoneIcon className="h-4 w-4" /> {t('system')}
+              <MonitorSmartPhoneIcon className={iconClassName} /> {t('system')}
             </button>
           </AppControlList.Item>
         </AppControlList>

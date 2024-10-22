@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { AlertCircle, ChevronDown } from 'lucide-react'
+
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { Button } from '@/components/ui/button'
 import { useScopedI18n } from '@/locales/client'
+import { isDevelopment } from '@/constants/common'
 
 type Props = {
   error: Error & { digest?: string }
@@ -29,7 +31,7 @@ export default function ErrorBoundaryAppRouter({ error, reset, title }: Props) {
             {t('tryAgain')}
           </Button>
         </div>
-        {process.env.NODE_ENV === 'development' && (
+        {isDevelopment && (
           <Collapsible open={isOpen} onOpenChange={setIsOpen} className="mt-4 w-full">
             <CollapsibleTrigger asChild>
               <Button variant="ghost" className="flex w-full items-center justify-start gap-1">
