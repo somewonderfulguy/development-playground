@@ -4,7 +4,7 @@ import { LuSun as SunIcon, LuMoon as MoonIcon, LuMonitorSmartphone as MonitorSma
 
 import { useScopedI18n } from '@/locales/client'
 import { useTheme } from '@/features/theme/hooks/useTheme'
-import { ResolvedTheme } from '@/features/theme/types/themeTypes'
+import { useIsMounted } from '@/hooks/useIsMounted'
 
 import AppControlPopover from '../AppControlPopover'
 import AppControlButton from '../AppControlButton'
@@ -13,20 +13,20 @@ import AppControlList from '../AppControlList'
 const buttonClassName = 'btn flex items-center gap-2'
 const iconClassName = 'h-4 w-4'
 
-type Props = {
-  cookieTheme?: ResolvedTheme
-}
-
-const ThemeSwitcher = ({ cookieTheme }: Props) => {
-  const { theme, setTheme, resolvedTheme: clientResolvedTheme } = useTheme()
+const ThemeSwitcher = () => {
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   const t = useScopedI18n('appControls.theme')
+
+  const isMounted = useIsMounted()
 
   return (
     <AppControlPopover>
       <AppControlPopover.Trigger asChild>
         <AppControlButton>
-          {(clientResolvedTheme ?? cookieTheme) === 'dark' ? (
+          {!isMounted ? (
+            ''
+          ) : resolvedTheme === 'dark' ? (
             <MoonIcon className={iconClassName} />
           ) : (
             <SunIcon className={iconClassName} />

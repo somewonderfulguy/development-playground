@@ -10,6 +10,7 @@ import AppNav from './components/AppNav'
 import AppControlButton from './components/AppControlButton'
 import AppControlSelect from './components/AppControlSelect'
 import UserButton from './components/UserButton'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 const languages = [
   { code: 'en', label: 'English' },
@@ -23,10 +24,9 @@ const iconSharedClassName = 'h-4 w-4' as const
 
 type Props = {
   children: ReactNode
-  themeSwitcher: ReactNode
 }
 
-export default function ApplicationLayout({ children, themeSwitcher }: Props) {
+export default function ApplicationLayout({ children }: Props) {
   const isRtl = useIsRtl()
 
   const changeLocale = useChangeLocale()
@@ -45,7 +45,7 @@ export default function ApplicationLayout({ children, themeSwitcher }: Props) {
             </AppControlButton>
           </TooltipGroup>
 
-          {themeSwitcher}
+          <ThemeSwitcher />
 
           <AppControlSelect
             value={currentLocale}
@@ -57,6 +57,7 @@ export default function ApplicationLayout({ children, themeSwitcher }: Props) {
             }
             options={languages.map((lang) => ({ value: lang.code, label: lang.label }))}
           />
+
           <UserButton />
         </div>
 
